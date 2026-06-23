@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { PHONE, PHONE_HREF, EMAIL, ADDRESS, OPENING_HOURS, CANONICAL_URL } from '../data/site';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home",    "item": CANONICAL_URL },
+    { "@type": "ListItem", "position": 2, "name": "Contact", "item": `${CANONICAL_URL}/contact` }
+  ]
+};
+---
+
+<Layout
+  title="Contact SC Roofing Ltd | Bath & Somerset"
+  description="Contact SC Roofing Ltd for a free roofing quote in Bath, Somerset or north Wiltshire. Call 07881 903 188 or use our contact form."
+  canonicalPath="/contact"
+  schemas={[breadcrumbSchema]}
+>
+
+  <section class="relative bg-ink overflow-hidden flex flex-col justify-end" style="min-height: clamp(500px, 65vh, 700px);">
+    <div class="absolute inset-0" aria-hidden="true">
+      <img src="/images/roof-bristol.webp" alt="" class="w-full h-full object-cover object-center" loading="eager" />
+      <div class="absolute inset-0 bg-ink/75"></div>
+      <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink to-transparent"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-10 w-full pt-36 pb-16 lg:pb-24">
+      <div class="flex items-center gap-3 mb-8">
+        <span class="w-8 h-px bg-red block"></span>
+        <span class="text-stone text-xs font-medium tracking-[0.25em] uppercase">Get In Touch</span>
+      </div>
+      <h1 class="font-bebas text-white mb-6 leading-none" style="font-size: clamp(4rem, 10vw, 9rem); letter-spacing: 0.02em;">
+        Let's talk<br /><span class="text-red">about your roof.</span>
+      </h1>
+      <p class="text-stone text-xl max-w-xl leading-relaxed">Free surveys, no-obligation quotes. We aim to respond within 24 hours.</p>
+    </div>
+  </section>
+
+  <section class="bg-cream py-20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-16">
+
+      <!-- Form -->
+      <div>
+        <form name="contact" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" class="space-y-5">
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden"><label>Don't fill this in: <input name="bot-field" /></label></p>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="name" class="block text-xs font-bold uppercase tracking-[0.15em] text-ink/50 mb-2">Your name</label>
+              <input type="text" id="name" name="name" required
+                class="w-full border-b-2 border-ink/20 focus:border-red bg-transparent py-3 text-ink placeholder-ink/30 outline-none transition-colors text-base" />
+            </div>
+            <div>
+              <label for="phone" class="block text-xs font-bold uppercase tracking-[0.15em] text-ink/50 mb-2">Phone number</label>
+              <input type="tel" id="phone" name="phone" required
+                class="w-full border-b-2 border-ink/20 focus:border-red bg-transparent py-3 text-ink placeholder-ink/30 outline-none transition-colors text-base" />
+            </div>
+          </div>
+          <div>
+            <label for="email" class="block text-xs font-bold uppercase tracking-[0.15em] text-ink/50 mb-2">Email address</label>
+            <input type="email" id="email" name="email"
+              class="w-full border-b-2 border-ink/20 focus:border-red bg-transparent py-3 text-ink placeholder-ink/30 outline-none transition-colors text-base" />
+          </div>
+          <div>
+            <label for="postcode" class="block text-xs font-bold uppercase tracking-[0.15em] text-ink/50 mb-2">Property postcode</label>
+            <input type="text" id="postcode" name="postcode"
+              class="w-full border-b-2 border-ink/20 focus:border-red bg-transparent py-3 text-ink placeholder-ink/30 outline-none transition-colors text-base" />
+          </div>
+          <div>
+            <label for="service" class="block text-xs font-bold uppercase tracking-[0.15em] text-ink/50 mb-2">Type of work</label>
+            <select id="service" name="service"
+              class="w-full border-b-2 border-ink/20 focus:border-red bg-transparent py-3 text-ink outline-none transition-colors text-base">
+              <option value="">Select a service…</option>
+              <option>Roof repair</option>
+              <option>New roof / full replacement</option>
+              <option>Flat roof</option>
+              <option>Chimney repair</option>
+              <option>Leadwork</option>
+              <option>Guttering &amp; fascias</option>
+              <option>Roof inspection</option>
+              <option>Emergency repair</option>
+              <option>Not sure — need advice</option>
+            </select>
+          </div>
+          <div>
+            <label for="message" class="block text-xs font-bold uppercase tracking-[0.15em] text-ink/50 mb-2">Tell us about the job</label>
+            <textarea id="message" name="message" rows="4"
+              class="w-full border-b-2 border-ink/20 focus:border-red bg-transparent py-3 text-ink placeholder-ink/30 outline-none transition-colors resize-none text-base"></textarea>
+          </div>
+          <button type="submit"
+            class="w-full bg-red hover:bg-red-dark text-white font-black py-4 rounded-sm transition-colors text-base tracking-wide mt-2">
+            Send message →
+          </button>
+          <p class="text-xs text-ink/40">By submitting you agree to our <a href="/privacy-policy" class="underline hover:text-ink">Privacy Policy</a>.</p>
+        </form>
+      </div>
+
+      <!-- Contact details -->
+      <div class="space-y-12">
+        <div>
+          <h2 class="font-display text-ink text-2xl font-bold mb-6">Contact</h2>
+          <div class="space-y-5">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.15em] text-ink/40 mb-1">Phone</p>
+              <a href={PHONE_HREF} class="font-display text-ink text-2xl font-bold hover:text-red transition-colors">{PHONE}</a>
+            </div>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.15em] text-ink/40 mb-1">Email</p>
+              <a href={`mailto:${EMAIL}`} class="text-ink font-semibold hover:text-red transition-colors">{EMAIL}</a>
+            </div>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.15em] text-ink/40 mb-1">Address</p>
+              <p class="text-ink/70">{ADDRESS}</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="font-display text-ink text-2xl font-bold mb-6">Opening Hours</h2>
+          <div class="space-y-2">
+            {OPENING_HOURS.map(h => (
+              <div class="flex justify-between border-b border-ink/8 pb-2 text-sm">
+                <span class="text-ink/60 font-medium">{h.day}</span>
+                <span class={h.opens ? 'text-ink font-semibold' : 'text-ink/25'}>{h.opens ? `${h.opens} – ${h.closes}` : 'Closed'}</span>
+              </div>
+            ))}
+          </div>
+          <p class="text-red text-xs font-bold uppercase tracking-wider mt-4">Emergency call-outs available</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,229 @@
+---
+import { navLinks, PHONE, PHONE_HREF, EMAIL, BUSINESS_NAME } from '../data/site';
+const currentPath = Astro.url.pathname;
+---
+
+<header
+  id="site-nav"
+  class="fixed top-0 inset-x-0 z-50 border-b border-transparent"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between h-20">
+
+      <!-- Logo -->
+      <a href="/" class="relative z-[60]" aria-label="S.C Roofing Ltd — home">
+        <img src="/logo.svg" alt="S.C Roofing Ltd" class="h-14 w-auto" width="380" height="80" />
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden lg:flex items-center gap-8" aria-label="Main navigation">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class={`text-sm font-medium tracking-wide transition-colors duration-200 ${
+              currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+                ? 'text-white'
+                : 'text-white/50 hover:text-white'
+            }`}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Right side: CTA + hamburger -->
+      <div class="flex items-center gap-4">
+        <a
+          href={PHONE_HREF}
+          class="magnetic group flex items-center gap-2.5 bg-red hover:bg-red-dark text-white font-bold px-5 py-2.5 rounded-sm transition-all duration-200 text-sm tracking-wide relative z-[60]"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.6 10.8z"/>
+          </svg>
+          <span class="hidden sm:inline">{PHONE}</span>
+          <span class="sm:hidden">Call now</span>
+        </a>
+
+        <!-- Hamburger button — mobile only -->
+        <button
+          id="menu-toggle"
+          class="lg:hidden relative z-[60] w-10 h-10 flex flex-col items-center justify-center gap-[5px] focus:outline-none"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="hamburger-line block w-6 h-[1.5px] bg-white origin-center transition-all duration-300"></span>
+          <span class="hamburger-line block w-6 h-[1.5px] bg-white origin-center transition-all duration-300"></span>
+          <span class="hamburger-line block w-4 h-[1.5px] bg-white/50 origin-center transition-all duration-300 self-end"></span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- ── Full-screen mobile menu overlay ────────────────────────────── -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-[55] bg-ink flex flex-col overflow-hidden pointer-events-none"
+  aria-hidden="true"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Navigation menu"
+>
+  <!-- Grain overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Red accent blob -->
+  <div class="absolute top-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-red/8 blur-[140px] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute bottom-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-red/5 blur-[120px] pointer-events-none" aria-hidden="true"></div>
+
+  <!-- Close button inside overlay -->
+  <button
+    id="menu-close"
+    class="absolute top-6 right-6 z-10 flex items-center gap-2 text-white/40 hover:text-white transition-colors duration-200 group"
+    aria-label="Close menu"
+  >
+    <span class="text-xs tracking-[0.2em] uppercase font-sans">Close</span>
+    <div class="w-8 h-8 border border-white/20 group-hover:border-white/60 flex items-center justify-center transition-colors duration-200">
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </div>
+  </button>
+
+  <!-- Menu content -->
+  <div class="relative flex flex-col h-full max-w-7xl mx-auto w-full px-6 pt-28 pb-12">
+
+    <!-- Nav links -->
+    <nav class="flex-1 flex flex-col justify-center" aria-label="Mobile navigation">
+      <ul class="space-y-1">
+        {navLinks.map((link, i) => (
+          <li class="menu-item overflow-hidden" style={`--i: ${i}`}>
+            <a
+              href={link.href}
+              class={`menu-link group flex items-baseline gap-4 py-3 border-b border-white/8 transition-colors duration-200 ${
+                currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+                  ? 'text-white'
+                  : 'text-white/40 hover:text-white'
+              }`}
+            >
+              <span class="text-red font-sans text-xs tracking-[0.3em] uppercase w-5 opacity-50 group-hover:opacity-100 transition-opacity">
+                0{i + 1}
+              </span>
+              <span style="font-family:'Bebas Neue','Arial Narrow',sans-serif" class="text-[clamp(3.5rem,12vw,6rem)] leading-none tracking-wide uppercase">
+                {link.label}
+              </span>
+              <svg class="ml-auto w-5 h-5 text-white/20 group-hover:text-red transition-colors shrink-0 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M17 7H7M17 7v10"/>
+              </svg>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Footer row -->
+    <div class="menu-footer border-t border-white/10 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div>
+        <p class="text-white/30 text-[10px] tracking-[0.3em] uppercase mb-1">Call us direct</p>
+        <a href={PHONE_HREF} class="text-white font-bold text-2xl tracking-tight hover:text-red transition-colors">
+          {PHONE}
+        </a>
+      </div>
+      <div class="text-right">
+        <p class="text-white/30 text-[10px] tracking-[0.3em] uppercase mb-1">Email</p>
+        <a href={`mailto:${EMAIL}`} class="text-white/60 text-sm hover:text-white transition-colors">
+          {EMAIL}
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  import gsap from 'gsap';
+
+  const toggle   = document.getElementById('menu-toggle')!;
+  const closeBtn = document.getElementById('menu-close')!;
+  const menu     = document.getElementById('mobile-menu')!;
+  const lines    = toggle.querySelectorAll('.hamburger-line');
+  const items    = menu.querySelectorAll('.menu-item');
+  const footer   = menu.querySelector('.menu-footer')!;
+
+  let isOpen = false;
+  let tl: gsap.core.Timeline;
+
+  function buildTimeline() {
+    tl = gsap.timeline({ paused: true });
+
+    // Panel reveal
+    tl.set(menu, { pointerEvents: 'auto' })
+      .fromTo(menu,
+        { clipPath: 'inset(0 0 100% 0)' },
+        { clipPath: 'inset(0 0 0% 0)', duration: 0.7, ease: 'power4.inOut' }
+      )
+      // Nav items stagger up
+      .fromTo(items,
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, stagger: 0.07, ease: 'power3.out' },
+        '-=0.3'
+      )
+      // Footer
+      .fromTo(footer,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' },
+        '-=0.2'
+      );
+  }
+
+  function openMenu() {
+    isOpen = true;
+    toggle.setAttribute('aria-expanded', 'true');
+    menu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    // Hamburger → X
+    gsap.to(lines[0], { rotation: 45,  y: 6.5,  duration: 0.3, ease: 'power2.inOut' });
+    gsap.to(lines[1], { rotation: -45, y: -6.5, duration: 0.3, ease: 'power2.inOut' });
+    gsap.to(lines[2], { opacity: 0, x: 10,       duration: 0.2 });
+
+    buildTimeline();
+    tl.play();
+  }
+
+  function closeMenu() {
+    isOpen = false;
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+
+    // X → hamburger
+    gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.3, ease: 'power2.inOut' });
+    gsap.to(lines[1], { rotation: 0, y: 0, duration: 0.3, ease: 'power2.inOut' });
+    gsap.to(lines[2], { opacity: 1, x: 0,  duration: 0.2, delay: 0.1 });
+
+    tl.reverse().then(() => {
+      menu.setAttribute('aria-hidden', 'true');
+      gsap.set(menu, { pointerEvents: 'none' });
+    });
+  }
+
+  toggle.addEventListener('click', () => isOpen ? closeMenu() : openMenu());
+  closeBtn.addEventListener('click', closeMenu);
+
+  // Close on nav link click
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', closeMenu);
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && isOpen) closeMenu();
+  });
+
+  // Initial state
+  gsap.set(menu, { clipPath: 'inset(0 0 100% 0)', pointerEvents: 'none' });
+  gsap.set(items, { y: 40, opacity: 0 });
+  gsap.set(footer, { y: 20, opacity: 0 });
+</script>

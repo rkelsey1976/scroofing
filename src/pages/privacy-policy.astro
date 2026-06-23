@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { BUSINESS_NAME, EMAIL } from '../data/site';
+---
+
+<Layout
+  title="Privacy Policy | SC Roofing Ltd"
+  description="Privacy policy for SC Roofing Ltd — how we collect, use and protect your personal data."
+  canonicalPath="/privacy-policy"
+>
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <h1 class="text-4xl font-black text-charcoal mb-2">Privacy Policy</h1>
+    <p class="text-mid-grey mb-10">Last updated: June 2025</p>
+
+    <div class="prose prose-lg max-w-none space-y-6 text-charcoal/80 leading-relaxed">
+      <p>{BUSINESS_NAME} ("we", "us") is committed to protecting your personal data. This policy explains what information we collect, how we use it, and your rights.</p>
+
+      <h2 class="text-xl font-bold text-charcoal mt-8 mb-2">What we collect</h2>
+      <p>When you use our contact form or call us, we may collect your name, phone number, email address, and property postcode. We only collect information necessary to respond to your enquiry.</p>
+
+      <h2 class="text-xl font-bold text-charcoal mt-8 mb-2">How we use it</h2>
+      <p>We use your details solely to respond to your enquiry and, where you agree, to follow up on a quote. We do not sell your data to third parties. We do not use your data for marketing without your explicit consent.</p>
+
+      <h2 class="text-xl font-bold text-charcoal mt-8 mb-2">Data retention</h2>
+      <p>Enquiry data is retained for 12 months and then securely deleted, unless you become a customer, in which case we retain necessary records for the duration of the business relationship plus 7 years for tax purposes.</p>
+
+      <h2 class="text-xl font-bold text-charcoal mt-8 mb-2">Your rights</h2>
+      <p>Under UK GDPR you have the right to access, correct or request deletion of any personal data we hold about you. To exercise any of these rights, contact us at <a href={`mailto:${EMAIL}`} class="text-red hover:underline">{EMAIL}</a>.</p>
+
+      <h2 class="text-xl font-bold text-charcoal mt-8 mb-2">Cookies</h2>
+      <p>This website uses no tracking cookies and no third-party analytics tools by default.</p>
+
+      <h2 class="text-xl font-bold text-charcoal mt-8 mb-2">Contact</h2>
+      <p>If you have any questions about this policy, contact us at <a href={`mailto:${EMAIL}`} class="text-red hover:underline">{EMAIL}</a>.</p>
+    </div>
+  </section>
+</Layout>

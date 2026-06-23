@@ -1,0 +1,560 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { PHONE, PHONE_HREF } from '../data/site';
+import { services } from '../data/services';
+import { areas } from '../data/areas';
+import { testimonials } from '../data/testimonials';
+import Slideshow from '../components/Slideshow.astro';
+
+const marqueeItems = [
+  'Roof Repairs', 'New Roofs', 'Flat Roofs', 'Chimney Work',
+  'Leadwork', 'Guttering & Fascias',
+];
+
+const serviceImages: Record<string, string> = {
+  'roof-repairs':    '/images/unnamed (1).webp',
+  'new-roofs':       '/images/unnamed.webp',
+  'flat-roofs':      '/images/486603524_9803734869658733_1301359858312601123_n.jpg',
+  'chimney-repairs': '/images/69305585_2639619822736976_1040299988862631936_n.jpg',
+  'leadwork':        '/images/unnamed (9).webp',
+  'guttering':       '/images/guttering.jpg',
+};
+---
+
+<Layout
+  title="SC Roofing Ltd | Roofing Contractors Bath & Somerset"
+  description="SC Roofing Ltd — trusted roofing contractors in Bath & Somerset for over 20 years. Repairs, new roofs, flat roofs, chimneys & emergency call-outs. Free quotes."
+  canonicalPath="/"
+>
+
+<!-- ════════════════════════════════════════════════════════ HERO ══ -->
+<section class="relative min-h-screen bg-ink flex flex-col overflow-hidden">
+
+  <!-- Hero background image -->
+  <div class="absolute inset-0" aria-hidden="true">
+    <img src="/images/roof-bristol.webp" alt="" class="w-full h-full object-cover object-center" loading="eager" fetchpriority="high" />
+    <!-- Dark overlay to keep text legible -->
+    <div class="absolute inset-0 bg-ink/75"></div>
+    <!-- Gradient fade at bottom -->
+    <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink to-transparent"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative flex-1 max-w-7xl mx-auto w-full px-6 lg:px-10 flex flex-col justify-end pb-16 lg:pb-20 pt-32">
+
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-0 items-end">
+
+      <!-- Left: H1 -->
+      <div>
+        <!-- Eyebrow -->
+        <div id="hero-eyebrow" class="opacity-0 flex items-center gap-3 mb-8">
+          <span class="w-8 h-px bg-red block"></span>
+          <span class="text-stone-light text-xs font-medium tracking-[0.25em] uppercase">Bath & Somerset · Est. 2004</span>
+        </div>
+
+        <!-- H1 — split chars animated by GSAP -->
+        <h1
+          id="hero-h1"
+          class="font-bebas text-white leading-none mb-10"
+          style="font-size: clamp(4rem, 11vw, 11rem); line-height: 0.88; letter-spacing: 0.01em; -webkit-text-stroke: 2px currentColor;"
+          aria-label="Roofing you can rely on."
+        >
+          <span class="block overflow-hidden"><span class="hero-line block">Roofing</span></span>
+          <span class="block overflow-hidden"><span class="hero-line block">you can</span></span>
+          <span class="block overflow-hidden text-red"><span class="hero-line block">rely on.</span></span>
+        </h1>
+
+        <!-- Sub -->
+        <p id="hero-sub" class="opacity-0 text-stone-light text-lg leading-relaxed max-w-md mb-10">
+          Over 20 years of expert roofing across Bath, Somerset and north Wiltshire. We get it done properly.
+        </p>
+
+        <!-- CTAs -->
+        <div id="hero-ctas" class="opacity-0 flex flex-wrap gap-4">
+          <a href={PHONE_HREF} class="magnetic inline-flex items-center gap-2.5 bg-red hover:bg-red-dark text-white font-bold px-7 py-4 rounded-sm transition-all duration-200 text-base tracking-wide shadow-lg shadow-red/25">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.6 10.8z"/>
+            </svg>
+            {PHONE}
+          </a>
+          <a href="/contact" class="inline-flex items-center gap-2 border border-white/20 hover:border-white/50 text-white/70 hover:text-white font-medium px-7 py-4 rounded-sm transition-all duration-300 text-base tracking-wide">
+            Free Quote
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: floating stat cards -->
+      <div id="hero-stats" class="opacity-0 hidden lg:flex flex-col gap-4 items-end pb-4">
+
+        <div class="bg-ink-soft border border-white/8 rounded-xl p-6 w-64 hover:border-red/40 transition-colors duration-300">
+          <p class="font-display text-white text-5xl font-black leading-none mb-1">20<span class="text-red">+</span></p>
+          <p class="text-stone text-sm font-medium tracking-wide uppercase mt-2">Years Experience</p>
+        </div>
+
+        <div class="bg-ink-soft border border-white/8 rounded-xl p-6 w-64 hover:border-red/40 transition-colors duration-300">
+          <p class="font-display text-white text-5xl font-black leading-none mb-1">500<span class="text-red">+</span></p>
+          <p class="text-stone text-sm font-medium tracking-wide uppercase mt-2">Roofs Completed</p>
+        </div>
+
+        <div class="bg-red/10 border border-red/25 rounded-xl p-6 w-64">
+          <div class="flex items-center gap-2 mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span class="text-red text-xs font-bold uppercase tracking-widest">NRTC Certified</span>
+          </div>
+          <p class="text-white/70 text-sm">Fully insured · Free surveys</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Marquee ticker -->
+  <div class="relative border-t border-white/8 bg-ink-mid py-4 overflow-hidden">
+    <div class="marquee-inner select-none">
+      {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
+        <span class="inline-flex items-center gap-6 text-stone text-sm font-medium tracking-[0.15em] uppercase px-6">
+          {item}
+          <span class="text-red text-base leading-none">·</span>
+        </span>
+      ))}
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════════════ SERVICES ══ -->
+<section class="bg-ink py-24" id="services-section">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6">
+      <div>
+        <span class="inline-flex items-center gap-2 text-red text-xs font-bold uppercase tracking-[0.2em] mb-4">
+          <span class="w-6 h-px bg-red"></span>
+          What We Do
+        </span>
+        <h2 class="font-bebas text-white leading-none" style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: 0.02em;">
+          Every roofing<br />service you need
+        </h2>
+      </div>
+      <a href="/services" class="text-stone hover:text-white text-sm font-medium tracking-wide transition-colors flex items-center gap-2 self-start lg:self-auto">
+        All services
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Service cards grid -->
+    <div id="services-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/8">
+      {services.map((service, i) => {
+        const img = serviceImages[service.slug];
+        return (
+          <a
+            href={`/services/${service.slug}`}
+            class="service-card group relative flex flex-col justify-end overflow-hidden bg-ink-mid"
+            style="min-height: 320px;"
+          >
+            {img ? (
+              <>
+                <img src={img} alt={service.name}
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/10"></div>
+                <div class="absolute inset-0 bg-red/0 group-hover:bg-red/15 transition-colors duration-500"></div>
+              </>
+            ) : (
+              <div class="absolute inset-0 bg-ink-mid group-hover:bg-ink-soft transition-colors duration-300">
+                <span class="absolute top-6 right-6 text-white/4 font-bebas leading-none select-none" style="font-size: 7rem; letter-spacing: -0.02em;">{String(i + 1).padStart(2,'0')}</span>
+              </div>
+            )}
+            <div class="relative p-7">
+              <span class="block text-red/60 group-hover:text-red text-[10px] font-bold uppercase tracking-[0.3em] mb-3 transition-colors duration-300">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="font-bebas text-white leading-none mb-3 group-hover:text-red transition-colors duration-300" style="font-size: clamp(1.6rem, 2.5vw, 2.2rem); letter-spacing: 0.03em;">
+                {service.name}
+              </h3>
+              <p class="text-stone/70 text-sm leading-relaxed line-clamp-2">{service.shortDesc.split('.')[0]}.</p>
+              <div class="mt-5 flex items-center gap-2 text-red/40 group-hover:text-red transition-colors duration-300">
+                <span class="text-[10px] tracking-widest uppercase font-bold font-sans">Learn more</span>
+                <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════ STATS ══ -->
+<section class="bg-ink-mid py-24 lg:py-32 border-y border-white/8" id="stats-section">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/8">
+
+      {[
+        { num: '20', suffix: '+', label: 'Years in Bath' },
+        { num: '500', suffix: '+', label: 'Roofs Completed' },
+        { num: '100', suffix: '%', label: 'Fully Insured' },
+        { num: '5',   suffix: '★', label: 'Google Rating' },
+      ].map((s, i) => (
+        <div class="stat-block opacity-0 bg-ink-mid px-10 py-14 text-center lg:text-left">
+          <p class="stat-number text-white leading-none" data-target={s.num}>
+            {s.num}<span class="text-red" style="font-size: 0.55em; vertical-align: top; line-height: 1.4;">{s.suffix}</span>
+          </p>
+          <p class="text-stone text-sm font-medium uppercase tracking-[0.15em] mt-5">{s.label}</p>
+        </div>
+      ))}
+
+    </div>
+  </div>
+</section>
+
+<Slideshow />
+
+<!-- ════════════════════════════════════════════════════════ ABOUT ══ -->
+<section class="bg-ink py-24 lg:py-32 overflow-hidden" id="about-section">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+      <!-- Quote / text -->
+      <div id="about-text" class="opacity-0">
+        <span class="inline-flex items-center gap-2 text-red text-xs font-bold uppercase tracking-[0.2em] mb-8">
+          <span class="w-6 h-px bg-red"></span>
+          About Us
+        </span>
+
+        <blockquote class="font-display text-white italic leading-tight mb-8" style="font-size: clamp(1.75rem, 3.5vw, 2.75rem);">
+          "We've been fixing Bath's roofs for over 20 years. We're not the cheapest. We're the ones you call back."
+        </blockquote>
+
+        <p class="text-stone leading-relaxed mb-10 text-base">
+          S.C Roofing is a small, privately owned contractor based in Peasedown St John. We work with homeowners, landlords, architects, building contractors and insurers. Every job gets a personal visit, an honest quote, and our promise to leave your property cleaner than we found it.
+        </p>
+
+        <!-- Credentials row -->
+        <div class="flex flex-wrap gap-3 mb-10">
+          {['NRTC Certified', 'Fully Insured', 'Insurance Work', 'Free Surveys', '20+ Years'].map(c => (
+            <span class="flex items-center gap-1.5 border border-white/15 text-white/60 text-xs font-medium px-3 py-1.5 rounded-full tracking-wide">
+              <span class="w-1 h-1 rounded-full bg-red flex-shrink-0"></span>
+              {c}
+            </span>
+          ))}
+        </div>
+
+        <a href="/about" class="magnetic inline-flex items-center gap-2 text-white font-semibold text-sm tracking-wide border-b border-red pb-0.5 hover:text-red transition-colors duration-200">
+          Our story
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Visual -->
+      <div id="about-visual" class="opacity-0 relative">
+        <!-- Main image -->
+        <div class="relative overflow-hidden" style="height: 420px;">
+          <img src="/images/shane.webp" alt="Shane — SC Roofing" class="w-full h-full object-cover object-top" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent"></div>
+        </div>
+
+        <!-- Floating accent card — bottom left -->
+        <div class="absolute -bottom-6 -left-6 bg-red p-6 rounded-xl shadow-2xl">
+          <p class="font-display text-white text-4xl font-black leading-none">20<span class="text-white/60 text-2xl">+</span></p>
+          <p class="text-white/80 text-xs font-medium uppercase tracking-wider mt-1">Years in Bath</p>
+        </div>
+
+        <!-- Floating accent card — top right -->
+        <div class="absolute -top-5 -right-5 bg-ink-soft border border-white/10 p-5 rounded-xl shadow-xl">
+          <div class="flex gap-0.5 mb-1.5">
+            {[1,2,3,4,5].map(() => (
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-red" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            ))}
+          </div>
+          <p class="text-white text-xs font-semibold">5-star rated on Google</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════ REVIEW ══ -->
+<section class="bg-cream py-24 lg:py-32 overflow-hidden" id="review-section">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="grid lg:grid-cols-[1fr_2fr] gap-16 items-start">
+
+      <div id="review-left" class="opacity-0">
+        <span class="inline-flex items-center gap-2 text-red text-xs font-bold uppercase tracking-[0.2em] mb-6">
+          <span class="w-6 h-px bg-red"></span>
+          Reviews
+        </span>
+        <h2 class="font-bebas text-ink leading-none mb-6" style="font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 0.02em;">
+          What our<br />customers say
+        </h2>
+
+        <!-- Google badge -->
+        <div class="inline-flex items-center gap-3 border border-ink/10 px-4 py-3 mb-8">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          <div>
+            <div class="flex gap-0.5 mb-0.5">
+              {Array.from({ length: 5 }).map(() => (
+                <svg class="w-3 h-3 text-red" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              ))}
+            </div>
+            <p class="text-ink text-xs font-bold">5.0 on Google</p>
+          </div>
+        </div>
+
+        <div class="flex gap-1.5">
+          {testimonials.map((_, n) => (
+            <button
+              class="review-dot w-2 h-2 rounded-full transition-all duration-300 bg-stone/30"
+              data-index={n}
+              aria-label={`Review ${n + 1}`}
+            ></button>
+          ))}
+        </div>
+      </div>
+
+      <div id="review-right" class="opacity-0">
+        <div id="review-display">
+          {testimonials.map((t, i) => (
+            <div
+              class={`review-slide ${i === 0 ? '' : 'hidden'}`}
+              data-index={i}
+            >
+              <!-- Big quote mark -->
+              <p class="font-display text-red/15 text-[9rem] leading-none -mb-6 select-none" aria-hidden="true">"</p>
+
+              <blockquote class="font-display text-ink italic leading-snug mb-8" style="font-size: clamp(1.4rem, 2.5vw, 2rem);">
+                "{t.text}"
+              </blockquote>
+
+              <div class="flex items-center gap-4 border-t border-ink/10 pt-6">
+                <div class="w-10 h-10 bg-red rounded-full flex items-center justify-center text-white font-black text-sm flex-shrink-0">
+                  {t.name[0]}
+                </div>
+                <div>
+                  <p class="font-bold text-ink text-sm">{t.name}</p>
+                  <div class="flex items-center gap-1.5 mt-0.5">
+                    <div class="flex gap-0.5">
+                      {Array.from({ length: t.rating }).map(() => (
+                        <svg class="w-3 h-3 text-red" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                      ))}
+                    </div>
+                    <span class="text-stone text-[10px] uppercase tracking-wider font-bold">{t.source}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════ AREAS ══ -->
+<section class="bg-ink py-20" id="areas-section">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+      <div>
+        <span class="inline-flex items-center gap-2 text-red text-xs font-bold uppercase tracking-[0.2em] mb-4">
+          <span class="w-6 h-px bg-red"></span>
+          Coverage
+        </span>
+        <h2 class="font-display text-white" style="font-size: clamp(2rem, 4vw, 3.25rem);">
+          Areas we cover
+        </h2>
+      </div>
+      <p class="text-stone text-sm max-w-xs leading-relaxed">Based in Peasedown St John — 30-mile radius covering Bath, Somerset & north Wiltshire.</p>
+    </div>
+
+    <div class="flex flex-wrap gap-2">
+      {areas.map(area => (
+        <a
+          href={`/areas/${area.slug}`}
+          class="group flex items-center gap-2 border border-white/10 hover:border-red/60 hover:bg-red/5 text-white/50 hover:text-white px-4 py-2.5 rounded-sm text-sm font-medium transition-all duration-200"
+        >
+          <span class="w-1 h-1 rounded-full bg-red/50 group-hover:bg-red flex-shrink-0 transition-colors"></span>
+          {area.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════ CTA ══ -->
+<section class="bg-red py-24 lg:py-32 overflow-hidden relative" id="cta-section">
+  <!-- Subtle texture -->
+  <div class="absolute inset-0 opacity-[0.06]" aria-hidden="true">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="p" width="80" height="80" patternUnits="userSpaceOnUse">
+          <path d="M 80 0 L 0 0 0 80" fill="none" stroke="white" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#p)" />
+    </svg>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-10 text-center">
+    <p class="text-white/60 text-xs font-bold uppercase tracking-[0.3em] mb-6">Get In Touch</p>
+    <h2
+      id="cta-phone"
+      class="font-display text-white font-black leading-none mb-6"
+      style="font-size: clamp(3rem, 9vw, 8rem);"
+    >
+      {PHONE}
+    </h2>
+    <p class="text-white/70 text-lg mb-10 max-w-lg mx-auto">
+      Free surveys. Honest advice. No hard sell.<br class="hidden sm:block"/>We typically respond within 24 hours.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href={PHONE_HREF} class="magnetic inline-flex items-center justify-center gap-2.5 bg-white text-red font-black px-8 py-4 rounded-sm hover:bg-cream transition-colors duration-200 text-lg tracking-tight">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.6 10.8z"/>
+        </svg>
+        Call now
+      </a>
+      <a href="/contact" class="inline-flex items-center justify-center gap-2 border-2 border-white/30 hover:border-white text-white font-bold px-8 py-4 rounded-sm transition-colors duration-200 text-base tracking-wide">
+        Send a message
+      </a>
+    </div>
+  </div>
+</section>
+
+</Layout>
+
+<!-- ════════════════════════════════════════════════════════ GSAP ══ -->
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ── Hero line reveal ──
+  gsap.set('.hero-line', { y: '105%' });
+  gsap.set(['#hero-eyebrow', '#hero-sub', '#hero-ctas', '#hero-stats'], { opacity: 0 });
+  gsap.set('#hero-eyebrow', { y: 10 });
+  gsap.set('#hero-sub',     { y: 15 });
+  gsap.set('#hero-ctas',    { y: 15 });
+  gsap.set('#hero-stats',   { x: 30 });
+
+  const heroTl = gsap.timeline({ delay: 0.2, defaults: { ease: 'power4.out' } });
+  heroTl
+    .to('#hero-eyebrow', { opacity: 1, y: 0, duration: 0.6 })
+    .to('.hero-line',    { y: '0%', duration: 1, stagger: 0.12 }, '-=0.3')
+    .to('#hero-sub',     { opacity: 1, y: 0, duration: 0.6 }, '-=0.5')
+    .to('#hero-ctas',    { opacity: 1, y: 0, duration: 0.5 }, '-=0.4')
+    .to('#hero-stats',   { opacity: 1, x: 0, duration: 0.7 }, '-=0.6');
+
+  // ── Services list rows ──
+  gsap.from('#services-list a', {
+    opacity: 0, y: 20, stagger: 0.06, duration: 0.5, ease: 'power2.out',
+    scrollTrigger: { trigger: '#services-section', start: 'top 75%' }
+  });
+
+  // ── Stats ──
+  gsap.to('.stat-block', {
+    opacity: 1, y: 0, stagger: 0.1, duration: 0.7, ease: 'power3.out',
+    scrollTrigger: { trigger: '#stats-section', start: 'top 80%' }
+  });
+  gsap.set('.stat-block', { y: 30 });
+
+  // ── About ──
+  gsap.to('#about-text', {
+    opacity: 1, x: 0, duration: 0.9, ease: 'power3.out',
+    scrollTrigger: { trigger: '#about-section', start: 'top 75%' }
+  });
+  gsap.to('#about-visual', {
+    opacity: 1, x: 0, duration: 0.9, ease: 'power3.out', delay: 0.15,
+    scrollTrigger: { trigger: '#about-section', start: 'top 75%' }
+  });
+  gsap.set('#about-text',   { x: -50 });
+  gsap.set('#about-visual', { x: 50 });
+
+  // ── Reviews ──
+  gsap.to(['#review-left', '#review-right'], {
+    opacity: 1, y: 0, stagger: 0.15, duration: 0.7, ease: 'power3.out',
+    scrollTrigger: { trigger: '#review-section', start: 'top 80%' }
+  });
+  gsap.set(['#review-left', '#review-right'], { y: 30 });
+
+  // ── Review dots / carousel ──
+  const dots   = document.querySelectorAll('.review-dot');
+  const slides = document.querySelectorAll('.review-slide');
+
+  function showReview(index: number) {
+    slides.forEach((s, i) => {
+      if (i === index) {
+        (s as HTMLElement).classList.remove('hidden');
+        gsap.from(s, { opacity: 0, y: 10, duration: 0.4, ease: 'power2.out' });
+      } else {
+        (s as HTMLElement).classList.add('hidden');
+      }
+    });
+    dots.forEach((d, i) => {
+      (d as HTMLElement).style.background = i === index ? '#c0222a' : '';
+      (d as HTMLElement).style.width      = i === index ? '24px' : '';
+      (d as HTMLElement).style.borderRadius = '4px';
+    });
+  }
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => showReview(i));
+  });
+  showReview(0);
+
+  // Auto-rotate reviews
+  let reviewIdx = 0;
+  setInterval(() => {
+    reviewIdx = (reviewIdx + 1) % slides.length;
+    showReview(reviewIdx);
+  }, 6000);
+
+  // ── Magnetic buttons ──
+  document.querySelectorAll('.magnetic').forEach(btn => {
+    btn.addEventListener('mousemove', (e: Event) => {
+      const ev = e as MouseEvent;
+      const rect = (btn as HTMLElement).getBoundingClientRect();
+      const x = ev.clientX - rect.left - rect.width  / 2;
+      const y = ev.clientY - rect.top  - rect.height / 2;
+      gsap.to(btn, { x: x * 0.25, y: y * 0.25, duration: 0.3, ease: 'power2.out' });
+    });
+    btn.addEventListener('mouseleave', () => {
+      gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' });
+    });
+  });
+
+  // ── CTA phone number parallax ──
+  gsap.to('#cta-phone', {
+    yPercent: -15,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#cta-section',
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: true,
+    }
+  });
+</script>

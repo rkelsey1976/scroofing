@@ -1,0 +1,13 @@
+---
+/**
+ * Renders JSON-LD schema blocks for structured data.
+ * Pass `schemas` as an array of schema objects — each one becomes its own <script> tag.
+ */
+interface Props {
+  schemas: object[];
+}
+const { schemas } = Astro.props;
+---
+{schemas.map(schema => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema, null, 0)} />
+))}

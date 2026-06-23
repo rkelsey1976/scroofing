@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 680 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Roof mark: original polygons scaled to ~77px tall and translated to origin -->
+  <g transform="scale(0.326) translate(-244, -70)">
+    <polygon fill="#FFFFFF" points="244.308594 208.62928 329.332215 208.62928 422.185525 109.32436 536.909843 231.553262 619.291248 231.553262 471.151374 70.0546875 370.419896 70.0546875"/>
+    <polygon fill="#C0222A" points="414.96185 208.62928 499.985472 208.62928 592.838781 109.32436 778.927189 306.054688 861.308594 306.054688 641.804631 70.0546875 541.073152 70.0546875"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="216" y="58" font-family="'Barlow Condensed', 'Arial Narrow', Arial, sans-serif" font-size="62" font-weight="800" fill="#FFFFFF" letter-spacing="2">S.C ROOFING</text>
+  <text x="217" y="82" font-family="'Barlow Condensed', 'Arial Narrow', Arial, sans-serif" font-size="16" font-weight="300" fill="#8a8880" letter-spacing="3">QUALITY SLATE TILING &amp; LEADWORK</text>
+</svg>

@@ -1,0 +1,205 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { PHONE, PHONE_HREF } from '../../data/site';
+import { services } from '../../data/services';
+import { areas } from '../../data/areas';
+
+export function getStaticPaths() {
+  return services.map(s => ({ params: { slug: s.slug }, props: { service: s } }));
+}
+
+const { service } = Astro.props;
+const related = services.filter(s => s.slug !== service.slug).slice(0, 4);
+
+import { CANONICAL_URL } from '../../data/site';
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": service.name,
+  "name": service.name,
+  "description": service.shortDesc,
+  "provider": {
+    "@type": "RoofingContractor",
+    "@id": `${CANONICAL_URL}/#business`
+  },
+  "areaServed": { "@type": "State", "name": "Somerset" },
+  "url": `${CANONICAL_URL}/services/${service.slug}`
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home",     "item": CANONICAL_URL },
+    { "@type": "ListItem", "position": 2, "name": "Services", "item": `${CANONICAL_URL}/services` },
+    { "@type": "ListItem", "position": 3, "name": service.name, "item": `${CANONICAL_URL}/services/${service.slug}` }
+  ]
+};
+---
+
+<Layout title={service.metaTitle} description={service.metaDescription} canonicalPath={`/services/${service.slug}`} schemas={[serviceSchema, breadcrumbSchema]}>
+
+  <!-- Hero -->
+  <section class="relative bg-ink overflow-hidden flex flex-col justify-end" style="min-height: clamp(500px, 65vh, 700px);">
+    <div class="absolute inset-0 pt-0" aria-hidden="true">
+      <img src={service.heroImage} alt="" class="w-full h-full object-cover object-center" loading="eager" />
+      <div class="absolute inset-0 bg-ink/75"></div>
+      <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink to-transparent"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-10 w-full pt-36 pb-16 lg:pb-24">
+      <nav class="flex items-center gap-2 text-stone text-xs tracking-wide mb-10">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span class="text-white/20">/</span>
+        <a href="/services" class="hover:text-white transition-colors">Services</a>
+        <span class="text-white/20">/</span>
+        <span class="text-white">{service.name}</span>
+      </nav>
+      <div class="flex items-center gap-3 mb-6">
+        <span class="w-8 h-px bg-red block"></span>
+        <span class="text-red text-xs font-bold uppercase tracking-[0.2em]">Roofing Service</span>
+      </div>
+      <h1 class="font-bebas text-white mb-6 leading-none" style="font-size: clamp(4rem, 10vw, 9rem); letter-spacing: 0.02em;">
+        {service.name}
+      </h1>
+      <p class="text-stone text-xl max-w-2xl leading-relaxed mb-10">{service.shortDesc}</p>
+      <div class="flex flex-wrap gap-4">
+        <a href={PHONE_HREF} class="inline-flex items-center gap-2 bg-red hover:bg-red-dark text-white font-bold px-6 py-3.5 transition-colors text-sm tracking-widest uppercase">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.6 10.8z"/></svg>
+          {PHONE}
+        </a>
+        <a href="/contact" class="inline-flex items-center gap-2 border border-white/20 hover:border-white text-white/70 hover:text-white font-bold px-6 py-3.5 transition-colors text-sm tracking-widest uppercase">
+          Free Quote
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Body copy + sidebar -->
+  <section class="bg-ink py-20 border-b border-white/8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
+
+        <!-- Copy -->
+        <div class="lg:col-span-7">
+          <p class="text-white/25 text-[10px] font-bold uppercase tracking-[0.3em] mb-8 font-sans">About this service</p>
+          {service.longDesc.split('\n\n').map(para => (
+            <p class="text-stone-light text-lg leading-relaxed mb-6"
+               set:html={para.replace(/\*\*(.+?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>')} />
+          ))}
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-5 flex flex-col gap-4">
+          <div class="border border-white/8 p-6 flex items-center gap-5">
+            <div class="w-12 h-12 bg-red/10 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6 text-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+            </div>
+            <div>
+              <p class="text-white font-bold">NRTC Certified</p>
+              <p class="text-stone text-sm">Fully insured · All work guaranteed</p>
+            </div>
+          </div>
+          <div class="border border-white/8 p-6 flex items-center gap-5">
+            <div class="w-12 h-12 bg-red/10 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6 text-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+            </div>
+            <div>
+              <p class="text-white font-bold">Written quotes</p>
+              <p class="text-stone text-sm">No surprises — fixed price before we start</p>
+            </div>
+          </div>
+          <div class="border border-white/8 p-6 flex items-center gap-5">
+            <div class="w-12 h-12 bg-red/10 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6 text-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <p class="text-white font-bold">Bath & Somerset</p>
+              <p class="text-stone text-sm">Based in Peasedown St John — 30-mile radius</p>
+            </div>
+          </div>
+          <div class="bg-red p-6">
+            <p class="font-bebas text-white text-2xl leading-none mb-1">Free survey included</p>
+            <p class="text-white/80 text-sm mb-4">We inspect first, quote second. No commitment required.</p>
+            <a href={PHONE_HREF} class="inline-flex items-center gap-2 bg-white text-red font-bold text-sm tracking-widest uppercase px-5 py-2.5 hover:bg-cream transition-colors">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.6 10.8z"/></svg>
+              {PHONE}
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas we cover for this service -->
+  <section class="bg-ink-mid py-16 border-b border-white/8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="w-6 h-px bg-red block"></span>
+        <p class="text-red text-[10px] font-bold uppercase tracking-[0.3em] font-sans">Coverage</p>
+      </div>
+      <h2 class="font-bebas text-white mb-10" style="font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: 0.02em;">
+        {service.name} across Bath & Somerset
+      </h2>
+      <div class="flex flex-wrap gap-3">
+        {areas.map(a => (
+          <a href={`/areas/${a.slug}`}
+             class="group flex items-center gap-2 border border-white/10 hover:border-red px-5 py-2.5 transition-colors duration-200">
+            <span class="w-1 h-1 bg-red/40 group-hover:bg-red transition-colors shrink-0"></span>
+            <span class="text-stone group-hover:text-white transition-colors text-sm font-medium">{a.name}</span>
+            <span class="text-stone/40 text-xs">{a.driveTime}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Other services -->
+  <section class="bg-ink py-16 border-b border-white/8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <p class="text-white/25 text-[10px] font-bold uppercase tracking-[0.3em] mb-8 font-sans">Other Services</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/8">
+        {related.map((s, i) => (
+          <a href={`/services/${s.slug}`}
+             class="group bg-ink hover:bg-ink-soft p-8 transition-colors duration-300 flex flex-col">
+            <span class="text-red/40 font-sans text-[10px] font-bold tracking-[0.3em] uppercase mb-4 group-hover:text-red transition-colors">0{i + 1}</span>
+            <h3 class="font-bebas text-white text-2xl leading-none mb-3 group-hover:text-red transition-colors" style="letter-spacing: 0.03em;">
+              {s.name}
+            </h3>
+            <p class="text-stone text-sm leading-relaxed flex-1">{s.shortDesc.split('.')[0]}.</p>
+            <div class="mt-6 flex items-center gap-2 text-red/50 group-hover:text-red transition-colors">
+              <span class="text-xs tracking-widest uppercase font-bold font-sans">Learn more</span>
+              <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="bg-red py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
+      <div>
+        <h2 class="font-bebas text-white leading-none mb-2" style="font-size: clamp(2rem, 4vw, 3.5rem);">
+          Need {service.name.toLowerCase()} in Bath or Somerset?
+        </h2>
+        <p class="text-white/80 text-base">Free survey, written quote, no obligation.</p>
+      </div>
+      <div class="flex flex-wrap gap-4 shrink-0">
+        <a href={PHONE_HREF} class="inline-flex items-center gap-2 bg-white text-red font-bold px-7 py-4 text-sm tracking-widest uppercase hover:bg-cream transition-colors">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.6 10.8z"/></svg>
+          {PHONE}
+        </a>
+        <a href="/contact" class="inline-flex items-center gap-2 border-2 border-white/40 hover:border-white text-white font-bold px-7 py-4 text-sm tracking-widest uppercase transition-colors">
+          Contact Form
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

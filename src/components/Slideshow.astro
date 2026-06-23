@@ -1,0 +1,161 @@
+---
+interface Slide {
+  src: string;
+  alt: string;
+  label: string;
+  location: string;
+}
+
+const slides: Slide[] = [
+  { src: '/images/unnamed.webp',      alt: 'Slate re-roof on Bath stone property',   label: 'Slate Re-Roof',       location: 'Bath' },
+  { src: '/images/roof-bristol.webp', alt: 'Slate roof overlooking Clifton Bridge',   label: 'Slate & Leadwork',    location: 'Bristol' },
+  { src: '/images/486603524_9803734869658733_1301359858312601123_n.jpg', alt: 'Flat roof completed over Bath rooftops', label: 'Flat Roof',           location: 'Bath' },
+  { src: '/images/70774988_2669059673126324_3410583136902316032_n.jpg', alt: 'SC Roofing van at estate property',      label: 'Full Re-Roof',        location: 'Somerset' },
+  { src: '/images/unnamed (4).webp',  alt: 'Roof deck in progress with valley view',  label: 'New Roof',            location: 'Keynsham' },
+  { src: '/images/unnamed (6).webp',  alt: 'Dormer conversion with clay tiles',       label: 'Dormer Conversion',   location: 'Somerset' },
+];
+---
+
+<section class="relative bg-ink overflow-hidden" id="slideshow-section">
+
+  <!-- Slides -->
+  <div class="relative" style="height: clamp(400px, 65vh, 720px);">
+
+    {slides.map((slide, i) => (
+      <div
+        class="slide absolute inset-0 opacity-0 transition-opacity duration-1000"
+        data-index={i}
+        aria-hidden={i !== 0}
+      >
+        <img
+          src={slide.src}
+          alt={slide.alt}
+          class="slide-img w-full h-full object-cover"
+          loading={i === 0 ? 'eager' : 'lazy'}
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-ink/40 to-transparent"></div>
+      </div>
+    ))}
+
+    <!-- Caption -->
+    <div class="absolute bottom-0 left-0 right-0 p-8 lg:p-12 flex items-end justify-between">
+      <div>
+        <p id="slide-location" class="text-red text-[10px] font-bold uppercase tracking-[0.3em] mb-2 transition-all duration-500"></p>
+        <p id="slide-label" class="font-bebas text-white leading-none transition-all duration-500" style="font-size: clamp(1.8rem, 4vw, 3.5rem); letter-spacing: 0.03em;"></p>
+      </div>
+
+      <!-- Counter + arrows -->
+      <div class="flex items-center gap-6">
+        <span id="slide-counter" class="text-stone/50 text-sm font-bold tracking-widest tabular-nums"></span>
+        <div class="flex gap-2">
+          <button id="slide-prev" aria-label="Previous"
+            class="w-11 h-11 border border-white/20 hover:border-white flex items-center justify-center text-white/60 hover:text-white transition-all duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <button id="slide-next" aria-label="Next"
+            class="w-11 h-11 border border-white/20 hover:border-red bg-red/0 hover:bg-red flex items-center justify-center text-white/60 hover:text-white transition-all duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dot indicators -->
+    <div class="absolute top-6 right-8 lg:right-12 flex gap-1.5" id="slide-dots">
+      {slides.map((_, i) => (
+        <button
+          class="slide-dot h-0.5 transition-all duration-400 bg-white/30"
+          style={`width: ${i === 0 ? '2rem' : '0.75rem'}`}
+          data-index={i}
+          aria-label={`Go to slide ${i + 1}`}
+        ></button>
+      ))}
+    </div>
+
+    <!-- Progress bar -->
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-white/8">
+      <div id="slide-progress" class="h-full bg-red" style="width: 0%; transition: width 5s linear;"></div>
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+  const slides     = document.querySelectorAll<HTMLElement>('.slide');
+  const dots       = document.querySelectorAll<HTMLElement>('.slide-dot');
+  const labelEl    = document.getElementById('slide-label')!;
+  const locationEl = document.getElementById('slide-location')!;
+  const counterEl  = document.getElementById('slide-counter')!;
+  const progressEl = document.getElementById('slide-progress')!;
+  const prevBtn    = document.getElementById('slide-prev')!;
+  const nextBtn    = document.getElementById('slide-next')!;
+
+  const data = [
+    { label: 'Slate Re-Roof',     location: 'Bath' },
+    { label: 'Slate & Leadwork',  location: 'Bristol' },
+    { label: 'Flat Roof',         location: 'Bath' },
+    { label: 'Full Re-Roof',      location: 'Somerset' },
+    { label: 'New Roof',          location: 'Keynsham' },
+    { label: 'Dormer Conversion', location: 'Somerset' },
+  ];
+
+  let current   = 0;
+  let timer: ReturnType<typeof setTimeout>;
+  const total   = slides.length;
+  const DELAY   = 5000;
+
+  function goTo(index: number) {
+    slides[current].classList.remove('opacity-100');
+    slides[current].classList.add('opacity-0');
+    slides[current].setAttribute('aria-hidden', 'true');
+    dots[current].style.width   = '0.75rem';
+    dots[current].style.opacity = '0.3';
+
+    current = (index + total) % total;
+
+    slides[current].classList.remove('opacity-0');
+    slides[current].classList.add('opacity-100');
+    slides[current].setAttribute('aria-hidden', 'false');
+    dots[current].style.width   = '2rem';
+    dots[current].style.opacity = '1';
+
+    labelEl.textContent    = data[current].label;
+    locationEl.textContent = data[current].location;
+    counterEl.textContent  = `${String(current + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+
+    // Restart progress bar
+    progressEl.style.transition = 'none';
+    progressEl.style.width      = '0%';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      progressEl.style.transition = `width ${DELAY}ms linear`;
+      progressEl.style.width      = '100%';
+    }));
+
+    clearTimeout(timer);
+    timer = setTimeout(() => goTo(current + 1), DELAY);
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+  // Pause on hover
+  const section = document.getElementById('slideshow-section')!;
+  section.addEventListener('mouseenter', () => { clearTimeout(timer); progressEl.style.animationPlayState = 'paused'; });
+  section.addEventListener('mouseleave', () => { timer = setTimeout(() => goTo(current + 1), DELAY); });
+
+  // Keyboard
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft')  goTo(current - 1);
+    if (e.key === 'ArrowRight') goTo(current + 1);
+  });
+
+  // Init
+  goTo(0);
+</script>
