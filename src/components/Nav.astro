@@ -78,22 +78,30 @@ const currentPath = Astro.url.pathname;
   <div class="absolute top-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-red/8 blur-[140px] pointer-events-none" aria-hidden="true"></div>
   <div class="absolute bottom-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-red/5 blur-[120px] pointer-events-none" aria-hidden="true"></div>
 
-  <!-- Close button inside overlay -->
-  <button
-    id="menu-close"
-    class="absolute top-6 right-6 z-10 flex items-center gap-2 text-white/40 hover:text-white transition-colors duration-200 group"
-    aria-label="Close menu"
-  >
-    <span class="text-xs tracking-[0.2em] uppercase font-sans">Close</span>
-    <div class="w-8 h-8 border border-white/20 group-hover:border-white/60 flex items-center justify-center transition-colors duration-200">
-      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
-      </svg>
-    </div>
-  </button>
-
   <!-- Menu content -->
-  <div class="relative flex flex-col h-full max-w-7xl mx-auto w-full px-6 pt-28 pb-12">
+  <div class="relative flex flex-col h-full max-w-7xl mx-auto w-full px-6 pb-10">
+
+    <!-- Top bar: logo + close -->
+    <div class="menu-topbar flex items-center justify-between h-20 shrink-0">
+      <a href="/" aria-label="S.C Roofing Ltd — home">
+        <img src="/logo.svg" alt="S.C Roofing Ltd" class="h-12 w-auto" width="380" height="80" />
+      </a>
+      <button
+        id="menu-close"
+        class="flex items-center gap-2.5 text-white/40 hover:text-white transition-colors duration-200 group"
+        aria-label="Close menu"
+      >
+        <span class="text-[10px] tracking-[0.25em] uppercase font-sans">Close</span>
+        <div class="w-8 h-8 border border-white/20 group-hover:border-red flex items-center justify-center transition-colors duration-200">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </div>
+      </button>
+    </div>
+
+    <!-- Red rule -->
+    <div class="menu-rule h-px bg-red/40 w-full shrink-0 mb-2"></div>
 
     <!-- Nav links -->
     <nav class="flex-1 flex flex-col justify-center" aria-label="Mobile navigation">
@@ -124,19 +132,21 @@ const currentPath = Astro.url.pathname;
     </nav>
 
     <!-- Footer row -->
-    <div class="menu-footer border-t border-white/10 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-      <div>
-        <p class="text-white/30 text-[10px] tracking-[0.3em] uppercase mb-1">Call us direct</p>
-        <a href={PHONE_HREF} class="text-white font-bold text-2xl tracking-tight hover:text-red transition-colors">
-          {PHONE}
-        </a>
-      </div>
-      <div class="text-right">
-        <p class="text-white/30 text-[10px] tracking-[0.3em] uppercase mb-1">Email</p>
-        <a href={`mailto:${EMAIL}`} class="text-white/60 text-sm hover:text-white transition-colors">
-          {EMAIL}
-        </a>
-      </div>
+    <div class="menu-footer border-t border-white/10 pt-6 flex flex-col gap-4">
+      <a href={PHONE_HREF}
+        class="flex items-center justify-center gap-3 bg-red hover:bg-red-dark text-white font-bold py-4 px-6 transition-colors duration-200 text-base tracking-wide">
+        <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.6 10.8z"/>
+        </svg>
+        {PHONE}
+      </a>
+      <a href={`mailto:${EMAIL}`}
+        class="flex items-center justify-center gap-3 border border-white/15 hover:border-white/40 text-white/50 hover:text-white py-3.5 px-6 transition-colors duration-200 text-sm tracking-wide">
+        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+        {EMAIL}
+      </a>
     </div>
 
   </div>
@@ -151,6 +161,8 @@ const currentPath = Astro.url.pathname;
   const lines    = toggle.querySelectorAll('.hamburger-line');
   const items    = menu.querySelectorAll('.menu-item');
   const footer   = menu.querySelector('.menu-footer')!;
+  const topbar   = menu.querySelector('.menu-topbar')!;
+  const rule     = menu.querySelector('.menu-rule')!;
 
   let isOpen = false;
   let tl: gsap.core.Timeline;
@@ -164,11 +176,17 @@ const currentPath = Astro.url.pathname;
         { clipPath: 'inset(0 0 100% 0)' },
         { clipPath: 'inset(0 0 0% 0)', duration: 0.7, ease: 'power4.inOut' }
       )
+      // Top bar + rule
+      .fromTo([topbar, rule],
+        { opacity: 0, y: -10 },
+        { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' },
+        '-=0.2'
+      )
       // Nav items stagger up
       .fromTo(items,
         { y: 40, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.5, stagger: 0.07, ease: 'power3.out' },
-        '-=0.3'
+        '-=0.15'
       )
       // Footer
       .fromTo(footer,
@@ -226,4 +244,5 @@ const currentPath = Astro.url.pathname;
   gsap.set(menu, { clipPath: 'inset(0 0 100% 0)', pointerEvents: 'none' });
   gsap.set(items, { y: 40, opacity: 0 });
   gsap.set(footer, { y: 20, opacity: 0 });
+  gsap.set([topbar, rule], { opacity: 0, y: -10 });
 </script>
