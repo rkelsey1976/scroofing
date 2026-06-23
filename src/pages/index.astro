@@ -506,16 +506,26 @@ const serviceImages: Record<string, string> = {
 
   function showReview(index: number) {
     slides.forEach((s, i) => {
+      const el = s as HTMLElement;
       if (i === index) {
-        (s as HTMLElement).classList.remove('hidden');
-        gsap.from(s, { opacity: 0, y: 10, duration: 0.4, ease: 'power2.out' });
+        el.classList.remove('hidden');
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(8px)';
+        requestAnimationFrame(() => {
+          el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        });
       } else {
-        (s as HTMLElement).classList.add('hidden');
+        el.classList.add('hidden');
+        el.style.opacity = '';
+        el.style.transform = '';
+        el.style.transition = '';
       }
     });
     dots.forEach((d, i) => {
-      (d as HTMLElement).style.background = i === index ? '#c0222a' : '';
-      (d as HTMLElement).style.width      = i === index ? '24px' : '';
+      (d as HTMLElement).style.background   = i === index ? '#c0222a' : '';
+      (d as HTMLElement).style.width        = i === index ? '24px' : '';
       (d as HTMLElement).style.borderRadius = '4px';
     });
   }
