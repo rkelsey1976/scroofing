@@ -41,7 +41,7 @@ const breadcrumbSchema = {
 
   <section class="bg-ink border-t border-white/8 pb-24">
     <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      {areas.map((area, i) => (
+      {areas.filter(a => !a.parent).map((area, i) => (
         <a
           href={`/areas/${area.slug}`}
           class="service-row group flex items-center gap-6 py-7 lg:py-8"
