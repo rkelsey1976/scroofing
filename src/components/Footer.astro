@@ -133,7 +133,7 @@ import { areas } from '../data/areas';
         <div class="col-span-2">
           <p class="text-white/25 text-[10px] font-bold uppercase tracking-[0.3em] mb-6 font-sans">Areas</p>
           <ul class="space-y-3">
-            {areas.slice(0, 8).map(a => (
+            {areas.filter(a => !a.parent).slice(0, 8).map(a => (
               <li>
                 <a href={`/areas/${a.slug}`}
                    class="group flex items-center gap-2 text-stone hover:text-white transition-colors duration-200 text-sm">
@@ -276,7 +276,7 @@ import { areas } from '../data/areas';
         </button>
         <div class="footer-acc-panel overflow-hidden" style="max-height:0">
           <ul class="space-y-3 pb-6">
-            {areas.slice(0, 8).map(a => (
+            {areas.filter(a => !a.parent).slice(0, 8).map(a => (
               <li><a href={`/areas/${a.slug}`} class="text-stone hover:text-white transition-colors text-sm">{a.name}</a></li>
             ))}
             <li><a href="/areas" class="text-red text-sm font-bold">All areas →</a></li>
