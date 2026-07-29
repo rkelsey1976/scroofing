@@ -23,12 +23,14 @@ export const navLinks = [
   { href: "/contact",     label: "Contact" },
 ];
 
-// Social links removed — accounts belong to a different business.
-// Re-add when Shane confirms new Facebook/Instagram handles.
-export const socialLinks: { label: string; href: string; icon: string }[] = [];
+export const socialLinks: { label: string; href: string; icon: string }[] = [
+  { label: "Facebook", href: "https://www.facebook.com/scroofinglimited/", icon: "facebook" },
+];
 
 export const accreditations = [
-  { name: "NRTC Certified", abbr: "NRTC" },
+  { name: "NFRC Trade Member", abbr: "NFRC", note: "National Federation of Roofing Contractors" },
+  { name: "NFRC Competent Person Scheme", abbr: "NFRC CPS", note: "Self-certify Building Regs without separate inspection" },
+  { name: "Velux Certified Installer", abbr: "Velux", note: "Approved for roof window, sun tunnel & flat roof window installation" },
 ];
 
 export const trustStats = [

@@ -24,10 +24,10 @@ export const areaServiceCopy: Record<string, AreaServiceCopy> = {
   },
 
   'bath-flat-roofs': {
-    metaTitle: `Flat Roofs Bath | EPDM, GRP & Felt Systems | SC Roofing`,
-    metaDescription: `Flat roof specialists in Bath. EPDM rubber, GRP fibreglass and felt systems for extensions, garages and commercial properties in BA1 & BA2. Free survey. 07881 903 188.`,
-    intro: `Bath has a large number of properties with flat roofed extensions, outbuildings, and bay roof sections — particularly on the Victorian and Edwardian terraces common across Oldfield Park, Bear Flat and Southgate. These low-pitch sections often use ageing felt that has long since passed its service life. S.C Roofing replaces failing flat roofs across Bath with modern systems that are genuinely long-lasting.`,
-    body: `We install EPDM rubber (20-year guarantee), GRP fibreglass (25-year guarantee) and torch-on felt systems depending on the size, configuration and budget. GRP is particularly well-suited to Bath properties where the flat roof is visible and appearance matters — it produces a clean, seamless finish with excellent UV resistance in Bath's relatively mild climate. All new flat roofs include upstand detailing to surrounding walls and proper drainage falls.`,
+    metaTitle: `Flat Roofs Bath | Single-Ply Membrane Systems | SC Roofing`,
+    metaDescription: `Flat roof specialists in Bath. Single-ply membrane systems — EPDM, Fatra, Armourplan and Danosa — for extensions, garages and commercial properties in BA1 & BA2. Free survey. 07881 903 188.`,
+    intro: `Bath has a large number of properties with flat roofed extensions, outbuildings, and bay roof sections — particularly on the Victorian and Edwardian terraces common across Oldfield Park, Bear Flat and Southgate. These low-pitch sections often use ageing felt that has long since passed its service life. S.C Roofing replaces failing flat roofs across Bath with modern single-ply membrane systems that are genuinely long-lasting. We don't install GRP fibreglass.`,
+    body: `We install EPDM rubber (20-year guarantee), Fatra PVC-P (25-year system guarantee), Armourplan from IKO, and Danosa single-ply membranes depending on the size, configuration and budget. For visible flat roof sections — common on Bath's bay windows and dormers — single-ply systems produce a clean, uniform finish that suits Bath's architectural character. All new flat roofs include upstand detailing to surrounding walls and proper drainage falls.`,
   },
 
   'bath-chimney-repairs': {
@@ -78,14 +78,14 @@ export const areaServiceCopy: Record<string, AreaServiceCopy> = {
     metaTitle: `New Roofs Keynsham BS31 | Full Replacements | SC Roofing`,
     metaDescription: `New roof installations in Keynsham, BS31. Concrete tile, slate, clay. Domestic and commercial. Free quote. SC Roofing Ltd 07881 903 188.`,
     intro: `Keynsham's housing stock includes a large proportion of 1960s–1980s properties where the original concrete interlocking tile roofs are reaching the end of their serviceable life — typically around 40–50 years. S.C Roofing carries out full roof replacements across Keynsham using modern concrete tile systems from Redland and Marley, as well as natural and synthetic slate where the property and budget suit.`,
-    body: `We also cover Keynsham's commercial and industrial properties on the Ashmead estate and surrounds, where flat roof systems — GRP and EPDM in particular — are the main requirement. All new roofs include new battens, breather membrane, and full re-lead of valleys and flashings where required. We liaise with building control where required and can issue guarantees through our manufacturer partners.`,
+    body: `We also cover Keynsham's commercial and industrial properties on the Ashmead estate and surrounds, where single-ply membrane flat roof systems — EPDM, Fatra, Armourplan and Danosa — are the main requirement. All new roofs include new battens, breather membrane, and full re-lead of valleys and flashings where required. We liaise with building control where required and can issue guarantees through our manufacturer partners.`,
   },
 
   'keynsham-flat-roofs': {
-    metaTitle: `Flat Roofs Keynsham BS31 | EPDM, GRP & Felt | SC Roofing`,
-    metaDescription: `Flat roofing in Keynsham, BS31. EPDM, GRP and felt systems for extensions, garages and commercial properties. Free survey. SC Roofing 07881 903 188.`,
-    intro: `Keynsham has a significant amount of flat-roofed residential and commercial property — 1960s extensions and garages are particularly common in the BS31 postcode, and many are now overdue for replacement. S.C Roofing installs EPDM rubber and GRP fibreglass systems that genuinely solve the problems inherent in older felt: blistering, pooling, and gradual UV degradation.`,
-    body: `EPDM is particularly popular for Keynsham domestic applications — it's lightweight, can be fitted in a day on most garage and extension roofs, and carries a 20-year guarantee. For the Ashmead industrial estate and surrounding commercial properties we also install torch-on SBS modified bitumen systems suitable for large flat areas. All surveys are free and no-obligation.`,
+    metaTitle: `Flat Roofs Keynsham BS31 | Single-Ply Systems | SC Roofing`,
+    metaDescription: `Flat roofing in Keynsham, BS31. Single-ply membrane systems — EPDM, Fatra, Armourplan and Danosa — for extensions, garages and commercial properties. Free survey. SC Roofing 07881 903 188.`,
+    intro: `Keynsham has a significant amount of flat-roofed residential and commercial property — 1960s extensions and garages are particularly common in the BS31 postcode, and many are now overdue for replacement. S.C Roofing installs EPDM rubber and other single-ply membrane systems that genuinely solve the problems inherent in older felt: blistering, pooling, and gradual UV degradation.`,
+    body: `EPDM is particularly popular for Keynsham domestic applications — it's lightweight, can be fitted in a day on most garage and extension roofs, and carries a 20-year guarantee. For larger applications — extensions, commercial buildings and the Ashmead industrial estate — we install Fatra, Armourplan and Danosa single-ply membranes with manufacturer-backed guarantees up to 25 years. All surveys are free and no-obligation.`,
   },
 
   'keynsham-chimney-repairs': {
@@ -140,10 +140,10 @@ export const areaServiceCopy: Record<string, AreaServiceCopy> = {
   },
 
   'radstock-flat-roofs': {
-    metaTitle: `Flat Roofs Radstock BA3 | EPDM & GRP | SC Roofing`,
-    metaDescription: `Flat roofing in Radstock, BA3. EPDM, GRP and felt for extensions and garages. Fast local response. SC Roofing 07881 903 188.`,
-    intro: `Flat roofed extensions and garages are common on Radstock's post-war estates, and most of the original felt systems fitted in the 1960s–80s are now well past their useful life. S.C Roofing replaces failing flat roofs across the BA3 postcode with EPDM rubber or GRP fibreglass systems that are genuinely long-lasting.`,
-    body: `Being based in Peasedown St John — just two miles from Radstock town centre — means we can respond quickly and price competitively for flat roofing work in the area. EPDM systems can typically be installed in a single day on most domestic applications, minimising disruption. All surveys are free and quotes are provided in writing.`,
+    metaTitle: `Flat Roofs Radstock BA3 | Single-Ply Systems | SC Roofing`,
+    metaDescription: `Flat roofing in Radstock, BA3. Single-ply membrane systems — EPDM, Fatra, Armourplan and Danosa — for extensions and garages. Fast local response. SC Roofing 07881 903 188.`,
+    intro: `Flat roofed extensions and garages are common on Radstock's post-war estates, and most of the original felt systems fitted in the 1960s–80s are now well past their useful life. S.C Roofing replaces failing flat roofs across the BA3 postcode with modern single-ply membrane systems that are genuinely long-lasting.`,
+    body: `Being based in Peasedown St John — just two miles from Radstock town centre — means we can respond quickly and price competitively for flat roofing work in the area. EPDM systems can typically be installed in a single day on most domestic applications, minimising disruption. For larger or commercial applications we also install Fatra, Armourplan and Danosa. All surveys are free and quotes are provided in writing.`,
   },
 
   'radstock-chimney-repairs': {
@@ -198,10 +198,10 @@ export const areaServiceCopy: Record<string, AreaServiceCopy> = {
   },
 
   'midsomer-norton-flat-roofs': {
-    metaTitle: `Flat Roofs Midsomer Norton | EPDM & GRP | SC Roofing`,
-    metaDescription: `Flat roofing in Midsomer Norton. EPDM rubber and GRP fibreglass for extensions and garages. Free survey. SC Roofing 07881 903 188.`,
-    intro: `The post-war and modern housing across Midsomer Norton and Westfield includes a large number of flat-roofed extensions, porches and garages that were originally covered in traditional built-up felt. S.C Roofing replaces these with modern single-ply or GRP systems that provide a genuine long-term solution.`,
-    body: `EPDM is the most popular system for domestic flat roofs in this area — it can be installed in a day on most garages and extensions, requires no hot-works, and carries a 20-year guarantee. GRP is recommended where a seamless, rigid finish is required, particularly for accessible or visible flat roof sections. All surveys are free.`,
+    metaTitle: `Flat Roofs Midsomer Norton | Single-Ply Systems | SC Roofing`,
+    metaDescription: `Flat roofing in Midsomer Norton. Single-ply membrane systems — EPDM, Fatra, Armourplan and Danosa — for extensions and garages. Free survey. SC Roofing 07881 903 188.`,
+    intro: `The post-war and modern housing across Midsomer Norton and Westfield includes a large number of flat-roofed extensions, porches and garages that were originally covered in traditional built-up felt. S.C Roofing replaces these with modern single-ply membrane systems that provide a genuine long-term solution.`,
+    body: `EPDM is the most popular system for domestic flat roofs in this area — it can be installed in a day on most garages and extensions, requires no hot-works, and carries a 20-year guarantee. For larger or more complex applications we install Fatra, Armourplan or Danosa single-ply membranes, each with manufacturer-backed guarantees. All surveys are free.`,
   },
 
   'midsomer-norton-chimney-repairs': {
@@ -256,10 +256,10 @@ export const areaServiceCopy: Record<string, AreaServiceCopy> = {
   },
 
   'frome-flat-roofs': {
-    metaTitle: `Flat Roofs Frome BA11 | EPDM, GRP & Felt | SC Roofing`,
-    metaDescription: `Flat roofing in Frome, BA11. EPDM, GRP and felt for extensions and garages. Free survey. SC Roofing 07881 903 188.`,
+    metaTitle: `Flat Roofs Frome BA11 | Single-Ply Systems | SC Roofing`,
+    metaDescription: `Flat roofing in Frome, BA11. Single-ply membrane systems — EPDM, Fatra, Armourplan and Danosa — for extensions and garages. Free survey. SC Roofing 07881 903 188.`,
     intro: `Extensions and outbuildings across Frome's residential streets frequently have flat roofs that are original felt from the 1970s–90s. These systems have a limited lifespan and once they begin to fail — blistering, splitting at seams, or lifting at upstands — they need replacing rather than patching.`,
-    body: `S.C Roofing installs EPDM and GRP systems for Frome homeowners, providing a genuinely long-lasting solution. GRP is particularly suited to Frome's older properties where the flat section is visible from the street and a clean, seamless finish is important. EPDM is the most cost-effective option for garage roofs and less-visible extensions.`,
+    body: `S.C Roofing installs a range of single-ply membrane systems for Frome homeowners, providing a genuinely long-lasting solution. EPDM is the most cost-effective option for garage roofs and less-visible extensions. For Frome's older properties where the flat section is visible from the street — particularly in conservation areas — we recommend Fatra, Armourplan or Danosa, which produce a clean, uniform finish suitable for visible applications.`,
   },
 
   'frome-chimney-repairs': {
@@ -314,10 +314,10 @@ export const areaServiceCopy: Record<string, AreaServiceCopy> = {
   },
 
   'trowbridge-flat-roofs': {
-    metaTitle: `Flat Roofs Trowbridge BA14 | EPDM & GRP | SC Roofing`,
-    metaDescription: `Flat roofing in Trowbridge, BA14. EPDM, GRP and felt for extensions and garages. SC Roofing 07881 903 188.`,
-    intro: `Extensions and detached garages across Trowbridge's residential areas commonly have flat felt roofs from the 1970s–90s. Once these systems begin leaking — as they inevitably do — replacement with a modern system is more cost-effective than repeated patching.`,
-    body: `S.C Roofing installs EPDM and GRP flat roofing systems across Trowbridge. EPDM is the most popular choice for garages and single-storey extensions — it's lightweight, quick to install, and carries a 20-year guarantee. GRP is used where a hard, seamless finish is required. All surveys are free.`,
+    metaTitle: `Flat Roofs Trowbridge BA14 | Single-Ply Systems | SC Roofing`,
+    metaDescription: `Flat roofing in Trowbridge, BA14. Single-ply membrane systems — EPDM, Fatra, Armourplan and Danosa — for extensions and garages. SC Roofing 07881 903 188.`,
+    intro: `Extensions and detached garages across Trowbridge's residential areas commonly have flat felt roofs from the 1970s–90s. Once these systems begin leaking — as they inevitably do — replacement with a modern single-ply membrane is more cost-effective than repeated patching.`,
+    body: `S.C Roofing installs EPDM, Fatra, Armourplan and Danosa single-ply flat roofing systems across Trowbridge. EPDM is the most popular choice for garages and single-storey extensions — it's lightweight, quick to install, and carries a 20-year guarantee. For larger or commercial applications we install Fatra, Armourplan or Danosa with manufacturer-backed guarantees. All surveys are free.`,
   },
 
   'trowbridge-chimney-repairs': {
@@ -372,10 +372,10 @@ export const areaServiceCopy: Record<string, AreaServiceCopy> = {
   },
 
   'shepton-mallet-flat-roofs': {
-    metaTitle: `Flat Roofs Shepton Mallet BA4 | EPDM & GRP | SC Roofing`,
-    metaDescription: `Flat roofing in Shepton Mallet, BA4. EPDM rubber and GRP fibreglass for extensions and garages. SC Roofing 07881 903 188.`,
-    intro: `Extensions and garage roofs across Shepton Mallet and surrounding BA4 villages frequently have failing felt systems. S.C Roofing installs EPDM and GRP replacement systems that provide a genuine long-term solution.`,
-    body: `EPDM is the most practical system for most domestic applications in this area — quick to install, long-lasting and competitively priced. GRP is the right choice where a hard, seamless finish is required. All surveys are free and no-obligation.`,
+    metaTitle: `Flat Roofs Shepton Mallet BA4 | Single-Ply Systems | SC Roofing`,
+    metaDescription: `Flat roofing in Shepton Mallet, BA4. Single-ply membrane systems — EPDM, Fatra, Armourplan and Danosa — for extensions and garages. SC Roofing 07881 903 188.`,
+    intro: `Extensions and garage roofs across Shepton Mallet and surrounding BA4 villages frequently have failing felt systems. S.C Roofing installs EPDM, Fatra, Armourplan and Danosa replacement systems that provide a genuine long-term solution.`,
+    body: `EPDM is the most practical system for most domestic applications in this area — quick to install, long-lasting and competitively priced. For larger extensions, commercial buildings, or where a particularly robust specification is required, we install Fatra, Armourplan or Danosa. All surveys are free and no-obligation.`,
   },
 
   'shepton-mallet-chimney-repairs': {
@@ -430,10 +430,10 @@ export const areaServiceCopy: Record<string, AreaServiceCopy> = {
   },
 
   'wells-flat-roofs': {
-    metaTitle: `Flat Roofs Wells Somerset | EPDM & GRP | SC Roofing`,
-    metaDescription: `Flat roofing in Wells, BA5. EPDM and GRP systems for extensions and garages. SC Roofing 07881 903 188.`,
-    intro: `Modern extensions and outbuildings across Wells's residential streets frequently have flat felt roofs that have reached end of life. S.C Roofing installs EPDM and GRP replacement systems across the BA5 postcode.`,
-    body: `EPDM is the most practical and cost-effective solution for most domestic flat roof replacements in Wells. GRP provides a seamless, rigid finish for more visible or complex applications. All surveys are free, and work is completed with minimal disruption.`,
+    metaTitle: `Flat Roofs Wells Somerset | Single-Ply Systems | SC Roofing`,
+    metaDescription: `Flat roofing in Wells, BA5. Single-ply membrane systems — EPDM, Fatra, Armourplan and Danosa — for extensions and garages. SC Roofing 07881 903 188.`,
+    intro: `Modern extensions and outbuildings across Wells's residential streets frequently have flat felt roofs that have reached end of life. S.C Roofing installs EPDM, Fatra, Armourplan and Danosa single-ply membrane systems across the BA5 postcode.`,
+    body: `EPDM is the most practical and cost-effective solution for most domestic flat roof replacements in Wells. For visible flat roof sections — where appearance matters in the city's conservation areas — we recommend Fatra, Armourplan or Danosa, which produce a clean, uniform finish. All surveys are free, and work is completed with minimal disruption.`,
   },
 
   'wells-chimney-repairs': {
@@ -488,10 +488,10 @@ export const areaServiceCopy: Record<string, AreaServiceCopy> = {
   },
 
   'peasedown-st-john-flat-roofs': {
-    metaTitle: `Flat Roofs Peasedown St John | EPDM & GRP | SC Roofing`,
-    metaDescription: `Flat roofing in Peasedown St John. EPDM and GRP for extensions and garages. Local contractor. SC Roofing 07881 903 188.`,
+    metaTitle: `Flat Roofs Peasedown St John | Single-Ply Systems | SC Roofing`,
+    metaDescription: `Flat roofing in Peasedown St John. Single-ply membrane systems — EPDM, Fatra, Armourplan and Danosa — for extensions and garages. Local contractor. SC Roofing 07881 903 188.`,
     intro: `Flat-roofed extensions and garages in Peasedown St John are close to home for S.C Roofing — we can inspect, quote and install quickly with minimal disruption.`,
-    body: `We install EPDM and GRP flat roofing systems for Peasedown homeowners, backed by manufacturer guarantees. EPDM suits most domestic applications; GRP where a seamless finish matters. Free surveys, written quotes, fast turnaround.`,
+    body: `We install EPDM, Fatra, Armourplan and Danosa single-ply membrane flat roofing systems for Peasedown homeowners, backed by manufacturer guarantees. EPDM suits most domestic applications; Fatra, Armourplan or Danosa for larger or more visible installations. Free surveys, written quotes, fast turnaround.`,
   },
 
   'peasedown-st-john-chimney-repairs': {
@@ -546,10 +546,10 @@ export const areaServiceCopy: Record<string, AreaServiceCopy> = {
   },
 
   'paulton-flat-roofs': {
-    metaTitle: `Flat Roofs Paulton Somerset | EPDM & GRP | SC Roofing`,
-    metaDescription: `Flat roofing in Paulton. EPDM and GRP for extensions and garages. SC Roofing 07881 903 188.`,
-    intro: `Extensions and garages across Paulton and the surrounding villages commonly have flat felt roofs that are past their service life. S.C Roofing installs EPDM and GRP replacements across the area.`,
-    body: `EPDM is the most practical choice for most domestic applications — quick installation, 20-year guarantee, and no hot works required. Free surveys. Fast local response.`,
+    metaTitle: `Flat Roofs Paulton Somerset | Single-Ply Systems | SC Roofing`,
+    metaDescription: `Flat roofing in Paulton. Single-ply membrane systems — EPDM, Fatra, Armourplan and Danosa — for extensions and garages. SC Roofing 07881 903 188.`,
+    intro: `Extensions and garages across Paulton and the surrounding villages commonly have flat felt roofs that are past their service life. S.C Roofing installs EPDM, Fatra, Armourplan and Danosa single-ply membrane replacements across the area.`,
+    body: `EPDM is the most practical choice for most domestic applications — quick installation, 20-year guarantee, and no hot works required. For larger or more complex applications we install Fatra, Armourplan or Danosa with manufacturer-backed guarantees. Free surveys. Fast local response.`,
   },
 
   'paulton-chimney-repairs': {
@@ -604,10 +604,10 @@ export const areaServiceCopy: Record<string, AreaServiceCopy> = {
   },
 
   'norton-st-philip-flat-roofs': {
-    metaTitle: `Flat Roofs Norton St Philip & Villages | SC Roofing`,
-    metaDescription: `Flat roofing in Norton St Philip and southern Bath villages. EPDM and GRP for extensions. SC Roofing 07881 903 188.`,
-    intro: `Modern extensions and outbuildings in the rural villages south of Bath frequently have flat felt roofs that have reached the end of their service life. S.C Roofing installs EPDM and GRP replacement systems across the area.`,
-    body: `EPDM is the most practical system for most rural domestic applications — lightweight, quick to install, and requiring no hot works that could be a concern in older timber-framed properties. Free surveys and written quotes.`,
+    metaTitle: `Flat Roofs Norton St Philip & Villages | Single-Ply Systems | SC Roofing`,
+    metaDescription: `Flat roofing in Norton St Philip and southern Bath villages. Single-ply membrane systems — EPDM, Fatra, Armourplan and Danosa. SC Roofing 07881 903 188.`,
+    intro: `Modern extensions and outbuildings in the rural villages south of Bath frequently have flat felt roofs that have reached the end of their service life. S.C Roofing installs EPDM, Fatra, Armourplan and Danosa single-ply membrane systems across the area.`,
+    body: `EPDM is the most practical system for most rural domestic applications — lightweight, quick to install, and requiring no hot works that could be a concern in older timber-framed properties. For larger or more demanding applications we install Fatra, Armourplan or Danosa. Free surveys and written quotes.`,
   },
 
   'norton-st-philip-chimney-repairs': {

@@ -79,7 +79,7 @@ export const areas: Area[] = [
     name: "Midsomer Norton",
     h1: "Roofing Contractors Midsomer Norton",
     shortDesc: "Trusted local roofers for Midsomer Norton — repairs, new roofs and emergency call-outs.",
-    longDesc: "Midsomer Norton is one of the larger towns in our area and we carry out a high volume of roofing work here throughout the year. S.C Roofing covers all roof types across Midsomer Norton and Westfield: pitched slate and tile roofs, flat felt and GRP roofs on extensions, chimney repairs, leadwork and guttering. We also cover emergency call-outs for storm damage and active leaks.",
+    longDesc: "Midsomer Norton is one of the larger towns in our area and we carry out a high volume of roofing work here throughout the year. S.C Roofing covers all roof types across Midsomer Norton and Westfield: pitched slate and tile roofs, flat single-ply membrane roofs (EPDM, Fatra, Armourplan, Danosa) on extensions, chimney repairs, leadwork and guttering. We also cover emergency call-outs for storm damage and active leaks.",
     metaTitle: "Roofing Contractors Midsomer Norton | SC Roofing Ltd",
     metaDescription: "Roofing contractors in Midsomer Norton. Repairs, new roofs, flat roofs and emergency call-outs. Free quote. SC Roofing 07881 903 188.",
     driveTime: "8 mins",

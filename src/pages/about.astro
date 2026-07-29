@@ -12,10 +12,10 @@ const breadcrumbSchema = {
 };
 ---
 
-<Layout
-  title="About SC Roofing Ltd | Bath & Somerset Roofers"
-  description="SC Roofing Ltd — a small, privately owned roofing company based in Peasedown St John, Bath. Over 20 years of experience. NRTC certified. Fully insured."
-  canonicalPath="/about"
+  <Layout
+    title="About SC Roofing Ltd | Bath & Somerset Roofers"
+    description="SC Roofing Ltd — a small, privately owned roofing company based in Peasedown St John, Bath. Over 20 years of experience. NFRC member, NFRC CPS registered, Velux certified. Fully insured."
+    canonicalPath="/about"
   schemas={[breadcrumbSchema]}
 >
 
@@ -62,7 +62,9 @@ const breadcrumbSchema = {
         <h2 class="font-display text-ink text-3xl font-bold mb-6">Credentials</h2>
         <ul class="space-y-3 mb-10">
           {[
-            'NFRC Member — Competent Person Scheme',
+            'NFRC Member — Trade Member of the National Federation of Roofing Contractors',
+            'NFRC Competent Person Scheme — self-certify Building Regulations without separate inspection',
+            'Velux Certified Installer — approved for roof windows, sun tunnels and flat roof windows',
             'Fully insured — Public Liability & Employer\'s',
             'Registered in England & Wales',
             'Insurance work accepted — written reports provided',
@@ -79,17 +81,12 @@ const breadcrumbSchema = {
           ))}
         </ul>
 
-        <!-- NFRC Certificates -->
-        <p class="text-xs font-bold uppercase tracking-[0.2em] text-ink/40 mb-4">NFRC Certification</p>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="border border-ink/10 overflow-hidden">
-            <img src="/images/unnamed (10).webp" alt="NFRC Competent Person Scheme certificate — SC Roofing Ltd"
-              class="w-full object-cover" loading="lazy" />
-          </div>
-          <div class="border border-ink/10 overflow-hidden">
-            <img src="/images/unnamed (8).webp" alt="NFRC Certificate of Membership — SC Roofing Ltd"
-              class="w-full object-cover" loading="lazy" />
-          </div>
+        <!-- Accreditations note -->
+        <div class="bg-cream border border-ink/10 p-5 mb-6">
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-ink/40 mb-2">Accreditation certificates</p>
+          <p class="text-ink/70 text-sm leading-relaxed">
+            We hold current NFRC Trade Membership and are registered under the NFRC Competent Person Scheme (covers pitched, flat and fully supported metal roofing). We're also Velux Certified Installers. Current certificate images are available on request — we can email or print copies for any customer who needs to see proof of accreditation.
+          </p>
         </div>
       </div>
 
