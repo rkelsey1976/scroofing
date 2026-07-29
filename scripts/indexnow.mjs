@@ -12,7 +12,7 @@
  * URL-submission quota.
  */
 
-const HOST = 'www.scroofing.co.uk';
+const HOST = 'scroofing.co.uk';
 const KEY = '911f2fc714397b3b3ba366ec8fb6186b';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 
