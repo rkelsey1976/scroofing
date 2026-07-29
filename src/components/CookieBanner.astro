@@ -73,10 +73,13 @@ const GA4_ID = 'G-D70X0WMKKG';
       s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
       document.head.appendChild(s);
 
-      // After GA4 loads, register conversion events for phone + email clicks.
-      // These show up in GA4 Admin > Events and should be marked as conversions
-      // for lead-attribution reporting (which pages generate calls/emails).
+      // After GA4 loads, register conversion + engagement event tracking.
+      // These show up in GA4 Admin > Events. Recommended conversions to mark:
+      //   contact_phone_click, contact_email_click, form_submit, cta_quote_click
+      // Recommended non-conversion events (engagement signals):
+      //   scroll_depth, engaged_visit, social_click, form_start
       installContactClickTracking();
+      installEngagementTracking();
     }
 
     function installContactClickTracking() {
@@ -121,6 +124,173 @@ const GA4_ID = 'G-D70X0WMKKG';
           link_location: linkLocation,
           link_url: href,
           page_path: pagePath
+        });
+      });
+    }
+
+    /*
+      Engagement tracking
+      -------------------
+      Tracks richer intent signals beyond contact clicks. All gated on consent.
+
+      Events:
+      - cta_quote_click   : any 'Get a Quote' button (location: hero|mid|footer)
+      - form_start        : first interaction with the contact form
+      - form_submit       : contact form submitted (no PII, just service type)
+      - scroll_depth      : 25/50/75/90% scroll milestones (once per page)
+      - engaged_visit     : 30s+ active on page with mouse/keyboard/scroll activity
+      - social_click      : Facebook / Instagram icon click (footer)
+    */
+    function installEngagementTracking() {
+      if (window.__sc_engagement_tracking_installed) return;
+      window.__sc_engagement_tracking_installed = true;
+
+      // ---- CTA click (Get a Quote) ----
+      document.addEventListener('click', function (e) {
+        if (!window.__sc_ga4_loaded) return;
+        var t = e.target;
+        if (!(t instanceof Element)) return;
+
+        var a = t.closest('a, button');
+        if (!a) return;
+
+        var text = (a.textContent || '').trim().toLowerCase();
+        // Only fire on the quote CTA, not every link
+        if (text.indexOf('get a quote') === -1 && text.indexOf('get quote') === -1) return;
+
+        // Don't double-count when this CTA is the same as a phone/mail click
+        var href = a.getAttribute('href') || '';
+        if (href.indexOf('tel:') === 0 || href.indexOf('mailto:') === 0) return;
+
+        var inHeader = !!a.closest('header, nav');
+        var inFooter = !!a.closest('footer');
+        var ctaLocation = inHeader ? 'header' : inFooter ? 'footer' : 'page';
+
+        gtag('event', 'cta_quote_click', {
+          cta_location: ctaLocation,
+          cta_text: (a.textContent || '').trim().slice(0, 50),
+          page_path: window.location.pathname || '(unknown)'
+        });
+      });
+
+      // ---- Form start (first field focus) ----
+      document.addEventListener('focusin', function (e) {
+        if (!window.__sc_ga4_loaded) return;
+        var t = e.target;
+        if (!(t instanceof Element)) return;
+        if (t.matches && t.matches('form[name="contact"] input, form[name="contact"] select, form[name="contact"] textarea')) {
+          if (window.__sc_form_started) return;
+          window.__sc_form_started = true;
+          gtag('event', 'form_start', {
+            form_name: 'contact',
+            page_path: window.location.pathname || '(unknown)'
+          });
+        }
+      });
+
+      // ---- Form submit (track service type, not PII) ----
+      document.addEventListener('submit', function (e) {
+        if (!window.__sc_ga4_loaded) return;
+        var form = e.target;
+        if (!(form instanceof Element)) return;
+        if (form.getAttribute('name') !== 'contact') return;
+
+        // Pull service type but no PII fields
+        var serviceEl = form.querySelector('select[name="service"]');
+        var service = serviceEl && serviceEl.value ? serviceEl.value : 'not_specified';
+
+        // Count of filled optional fields (privacy-preserving engagement signal)
+        var filledCount = 0;
+        ['name', 'phone', 'email', 'postcode', 'service', 'message'].forEach(function (fieldName) {
+          var el = form.querySelector('[name="' + fieldName + '"]');
+          if (el && el.value && el.value.trim().length > 0) filledCount++;
+        });
+
+        gtag('event', 'form_submit', {
+          form_name: 'contact',
+          service_selected: service,
+          fields_filled: filledCount,
+          page_path: window.location.pathname || '(unknown)'
+        });
+      });
+
+      // ---- Scroll depth (25/50/75/90%) ----
+      (function () {
+        var milestones = [25, 50, 75, 90];
+        var fired = {};
+        var scrollTimeout = null;
+
+        function checkScroll() {
+          if (!window.__sc_ga4_loaded) return;
+          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          if (docHeight <= 0) return;
+          var pct = Math.round((window.scrollY / docHeight) * 100);
+          milestones.forEach(function (m) {
+            if (pct >= m && !fired[m]) {
+              fired[m] = true;
+              gtag('event', 'scroll_depth', {
+                percent: m,
+                page_path: window.location.pathname || '(unknown)'
+              });
+            }
+          });
+        }
+
+        window.addEventListener('scroll', function () {
+          if (scrollTimeout) return;
+          scrollTimeout = setTimeout(function () {
+            scrollTimeout = null;
+            checkScroll();
+          }, 200);
+        }, { passive: true });
+      })();
+
+      // ---- Engaged visit (30s + activity) ----
+      (function () {
+        var active = false;
+        var timer = null;
+
+        function bump() {
+          active = true;
+          if (timer) clearTimeout(timer);
+          timer = setTimeout(function () { active = false; }, 5000);
+        }
+
+        ['mousemove', 'keydown', 'scroll', 'touchstart'].forEach(function (evt) {
+          window.addEventListener(evt, bump, { passive: true });
+        });
+
+        setTimeout(function () {
+          if (active && window.__sc_ga4_loaded && !window.__sc_engaged_visit_fired) {
+            window.__sc_engaged_visit_fired = true;
+            gtag('event', 'engaged_visit', {
+              page_path: window.location.pathname || '(unknown)'
+            });
+          }
+        }, 30000);
+      })();
+
+      // ---- Social icon clicks (FB, IG, X, etc) ----
+      document.addEventListener('click', function (e) {
+        if (!window.__sc_ga4_loaded) return;
+        var t = e.target;
+        if (!(t instanceof Element)) return;
+        var a = t.closest('a[href*="facebook.com"], a[href*="instagram.com"], a[href*="twitter.com"], a[href*="x.com"], a[href*="linkedin.com"], a[href*="youtube.com"], a[href*="tiktok.com"]');
+        if (!a) return;
+
+        var href = a.getAttribute('href') || '';
+        var platform = 'other';
+        if (href.indexOf('facebook.com') !== -1) platform = 'facebook';
+        else if (href.indexOf('instagram.com') !== -1) platform = 'instagram';
+        else if (href.indexOf('twitter.com') !== -1 || href.indexOf('x.com') !== -1) platform = 'x';
+        else if (href.indexOf('linkedin.com') !== -1) platform = 'linkedin';
+        else if (href.indexOf('youtube.com') !== -1) platform = 'youtube';
+        else if (href.indexOf('tiktok.com') !== -1) platform = 'tiktok';
+
+        gtag('event', 'social_click', {
+          platform: platform,
+          link_url: href,
+          page_path: window.location.pathname || '(unknown)'
         });
       });
     }
