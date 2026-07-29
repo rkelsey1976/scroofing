@@ -10,9 +10,10 @@ interface Props {
   description: string;
   canonicalPath?: string;
   schemas?: object[];
+  noindex?: boolean;
 }
 
-const { title, description, canonicalPath = '', schemas = [] } = Astro.props;
+const { title, description, canonicalPath = '', schemas = [], noindex = false } = Astro.props;
 const canonical = `${CANONICAL_URL}${canonicalPath}`;
 
 const localBusinessSchema = {
@@ -102,6 +103,7 @@ const localBusinessSchema = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
