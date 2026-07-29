@@ -30,7 +30,7 @@ export const socialLinks: { label: string; href: string; icon: string }[] = [
 
 export const accreditations = [
   { name: "NFRC Trade Member", abbr: "NFRC", note: "National Federation of Roofing Contractors" },
-  { name: "NFRC Competent Person Scheme", abbr: "NFRC CPS", note: "Self-certify Building Regs without separate inspection" },
+  { name: "NFRC Competent Person Scheme", abbr: "NFRC CPS", note: "Self-certify pitched roofing to Building Regs 4 and 7" },
   { name: "Velux Certified Installer", abbr: "Velux", note: "Approved Velux installer · TrustMark Government Endorsed Quality" },
 ];
 
