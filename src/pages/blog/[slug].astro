@@ -1,0 +1,134 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { CANONICAL_URL } from '../../data/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+type Props = { post: CollectionEntry<'blog'> };
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const url = `${CANONICAL_URL}/blog/${post.id}`;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "datePublished": post.data.pubDate.toISOString(),
+  "dateModified": (post.data.updatedDate || post.data.pubDate).toISOString(),
+  "author": {
+    "@type": "Organization",
+    "name": post.data.author,
+    "url": CANONICAL_URL
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "S.C Roofing Ltd",
+    "url": CANONICAL_URL
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": url
+  },
+  "url": url
+};
+
+const formatDate = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+// Find related posts (same service, exclude self)
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const related = allPosts
+  .filter(p => p.data.service === post.data.service && p.slug !== post.id)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
+---
+
+<Layout
+  title={`${post.data.title} | SC Roofing Ltd`}
+  description={post.data.description}
+  canonicalPath={`/blog/${post.id}`}
+  schemas={[articleSchema]}
+  ogType="article"
+>
+
+  <article class="bg-cream">
+    <!-- Header -->
+    <header class="bg-ink py-16 border-b border-white/8">
+      <div class="max-w-3xl mx-auto px-6 lg:px-10">
+        <a href="/blog" class="text-stone text-xs uppercase tracking-widest hover:text-red transition-colors mb-6 inline-block">
+          ← Back to all articles
+        </a>
+        <div class="flex items-center gap-3 text-xs uppercase tracking-wider text-stone/60 mb-4">
+          <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+          <span>·</span>
+          <span>By {post.data.author}</span>
+        </div>
+        <h1 class="font-display text-white font-bold leading-tight" style="font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: -0.01em;">
+          {post.data.title}
+        </h1>
+      </div>
+    </header>
+
+    <!-- Body -->
+    <div class="max-w-3xl mx-auto px-6 lg:px-10 py-16">
+      <div class="prose prose-lg max-w-none
+        [&_p]:text-ink/80 [&_p]:leading-relaxed [&_p]:mb-6 [&_p]:text-lg
+        [&_h2]:font-display [&_h2]:text-ink [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:mt-12 [&_h2]:mb-4
+        [&_h3]:font-display [&_h3]:text-ink [&_h3]:text-xl [&_h3]:font-bold [&_h3]:mt-8 [&_h3]:mb-3
+        [&_ul]:text-ink/80 [&_ul]:my-6 [&_ul]:space-y-2 [&_ul]:list-disc [&_ul]:pl-6
+        [&_ol]:text-ink/80 [&_ol]:my-6 [&_ol]:space-y-2 [&_ol]:list-decimal [&_ol]:pl-6
+        [&_li]:text-ink/80
+        [&_a]:text-red [&_a]:underline [&_a]:font-semibold hover:[&_a]:text-red-dark
+        [&_strong]:text-ink [&_strong]:font-bold
+        [&_blockquote]:border-l-4 [&_blockquote]:border-red [&_blockquote]:pl-6 [&_blockquote]:italic [&_blockquote]:text-ink/70 [&_blockquote]:my-8
+      ">
+        <Content />
+      </div>
+
+      <!-- Soft CTA -->
+      <div class="mt-16 border-t border-ink/10 pt-10">
+        <div class="bg-white border border-ink/10 p-8 text-center">
+          <p class="text-ink/60 text-sm uppercase tracking-widest mb-3">Need a roofer?</p>
+          <h2 class="font-display text-ink text-2xl font-bold mb-3">Get a free, written quote.</h2>
+          <p class="text-ink/65 mb-6">Free surveys across Bath, Somerset and north Wiltshire. No hard sell, written quotes within 48 hours.</p>
+          <a href="/contact" class="inline-flex items-center justify-center gap-2 bg-red hover:bg-red-dark text-white font-black px-7 py-4 rounded-sm transition-colors text-base tracking-wide">
+            Get a Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Related -->
+  {related.length > 0 && (
+    <section class="bg-ink py-20 border-t border-white/8">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <p class="text-red text-xs font-bold uppercase tracking-[0.25em] mb-3">Keep reading</p>
+        <h2 class="font-display text-white font-bold mb-10 leading-tight" style="font-size: clamp(2rem, 4vw, 3rem);">
+          More on {post.data.service.replace('-', ' ')}
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          {related.map(p => (
+            <a href={`/blog/${p.slug}`} class="block bg-ink-2 border border-white/8 hover:border-red/40 p-6 transition-colors">
+              <p class="text-stone/50 text-xs uppercase tracking-wider mb-3">
+                <time datetime={p.data.pubDate.toISOString()}>{formatDate(p.data.pubDate)}</time>
+              </p>
+              <h3 class="font-display text-white text-lg font-bold leading-snug">
+                {p.data.title}
+              </h3>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+</Layout>
