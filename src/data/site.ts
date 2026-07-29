@@ -24,7 +24,8 @@ export const navLinks = [
 ];
 
 export const socialLinks: { label: string; href: string; icon: string }[] = [
-  { label: "Facebook", href: "https://www.facebook.com/scroofinglimited/", icon: "facebook" },
+  { label: "Facebook",  href: "https://www.facebook.com/scroofinglimited/", icon: "facebook" },
+  { label: "Instagram", href: "https://www.instagram.com/s.croofing/",         icon: "instagram" },
 ];
 
 export const accreditations = [
