@@ -3,7 +3,7 @@ export const PHONE_HREF = "tel:+447881903188";
 export const BUSINESS_NAME = "S.C Roofing Ltd";
 export const EMAIL = "info@scroofing.co.uk";
 export const ADDRESS = "9 Frenchfield Road, Peasedown St John, Bath, BA2 8SL";
-export const CANONICAL_URL = "https://www.scroofing.co.uk";
+export const CANONICAL_URL = "https://scroofing.co.uk";
 
 export const OPENING_HOURS = [
   { day: "Monday",    opens: "08:00", closes: "17:00" },

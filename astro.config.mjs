@@ -6,7 +6,7 @@ import { lastmodForUrl } from './src/utils/sitemapLastmod.mjs';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.scroofing.co.uk',
+  site: 'https://scroofing.co.uk',
   integrations: [
     sitemap({
       filter: (page) => !page.includes('/thank-you'),
