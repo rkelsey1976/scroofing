@@ -18,14 +18,13 @@ import { CANONICAL_URL } from '../../data/site';
 
 const areaSchema = {
   "@context": "https://schema.org",
-  "@type": "RoofingContractor",
-  "@id": `${CANONICAL_URL}/areas/${area.slug}/#business`,
-  "name": "S.C Roofing Ltd",
-  "url": `${CANONICAL_URL}/areas/${area.slug}`,
-  "telephone": "+447881903188",
-  "areaServed": { "@type": "City", "name": area.name },
+  "@type": "Service",
+  "serviceType": "Roofing Services",
+  "name": `Roofing Services in ${area.name}`,
   "description": area.shortDesc,
-  "parentOrganization": { "@id": `${CANONICAL_URL}/#business` }
+  "provider": { "@type": "RoofingContractor", "@id": `${CANONICAL_URL}/#business` },
+  "areaServed": { "@type": "City", "name": area.name },
+  "url": `${CANONICAL_URL}/areas/${area.slug}`
 };
 
 const breadcrumbSchema = {
