@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { PHONE, PHONE_HREF } from '../data/site';
 import { services } from '../data/services';
 import { areas } from '../data/areas';
 import { testimonials } from '../data/testimonials';
@@ -71,14 +70,11 @@ const serviceImages: Record<string, string> = {
 
         <!-- CTAs -->
         <div id="hero-ctas" class="opacity-0 flex flex-wrap gap-4">
-          <a href={PHONE_HREF} class="magnetic inline-flex items-center gap-2.5 bg-red hover:bg-red-dark text-white font-bold px-7 py-4 rounded-sm transition-all duration-200 text-base tracking-wide shadow-lg shadow-red/25">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.6 10.8z"/>
-            </svg>
-            {PHONE}
+          <a href="/contact" class="magnetic inline-flex items-center gap-2.5 bg-red hover:bg-red-dark text-white font-bold px-7 py-4 rounded-sm transition-all duration-200 text-base tracking-wide shadow-lg shadow-red/25">
+            Get a Quote
           </a>
-          <a href="/contact" class="inline-flex items-center gap-2 border border-white/20 hover:border-white/50 text-white/70 hover:text-white font-medium px-7 py-4 rounded-sm transition-all duration-300 text-base tracking-wide">
-            Free Quote
+          <a href="/services" class="inline-flex items-center gap-2 border border-white/20 hover:border-white/50 text-white/70 hover:text-white font-medium px-7 py-4 rounded-sm transition-all duration-300 text-base tracking-wide">
+            Our Services
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -421,24 +417,18 @@ const serviceImages: Record<string, string> = {
   <div class="relative max-w-7xl mx-auto px-6 lg:px-10 text-center">
     <p class="text-white/60 text-xs font-bold uppercase tracking-[0.3em] mb-6">Get In Touch</p>
     <h2
-      id="cta-phone"
+      id="cta-quote"
       class="font-bebas text-white leading-none mb-6"
       style="font-size: clamp(3rem, 9vw, 8rem);"
     >
-      {PHONE}
+      Get a free quote.
     </h2>
     <p class="text-white/70 text-lg mb-10 max-w-lg mx-auto">
       Free surveys. Honest advice. No hard sell.<br class="hidden sm:block"/>We typically respond within 24 hours.
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href={PHONE_HREF} class="magnetic inline-flex items-center justify-center gap-2.5 bg-white text-red font-black px-8 py-4 rounded-sm hover:bg-cream transition-colors duration-200 text-lg tracking-tight">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.6 10.8z"/>
-        </svg>
-        Call now
-      </a>
-      <a href="/contact" class="inline-flex items-center justify-center gap-2 border-2 border-white/30 hover:border-white text-white font-bold px-8 py-4 rounded-sm transition-colors duration-200 text-base tracking-wide">
-        Send a message
+      <a href="/contact" class="magnetic inline-flex items-center justify-center gap-2.5 bg-white text-red font-black px-8 py-4 rounded-sm hover:bg-cream transition-colors duration-200 text-lg tracking-tight">
+        Get a Quote
       </a>
     </div>
   </div>
@@ -556,8 +546,8 @@ const serviceImages: Record<string, string> = {
     });
   });
 
-  // ── CTA phone number parallax ──
-  gsap.to('#cta-phone', {
+  // ── CTA headline parallax ──
+  gsap.to('#cta-quote', {
     yPercent: -15,
     ease: 'none',
     scrollTrigger: {

@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { PHONE, PHONE_HREF } from '../../data/site';
 import { services } from '../../data/services';
 import { CANONICAL_URL } from '../../data/site';
 
@@ -84,13 +83,10 @@ const breadcrumbSchema = {
     <div class="max-w-3xl mx-auto px-6 text-center">
       <p class="text-white/60 text-xs font-bold uppercase tracking-[0.3em] mb-4">Not sure what you need?</p>
       <h2 class="font-bebas text-white mb-6 leading-none" style="font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 0.02em;">
-        Just call us and describe what you're seeing.
+        Tell us what you're seeing, we'll quote it.
       </h2>
-      <a href={PHONE_HREF} class="inline-flex items-center gap-2.5 bg-white text-red font-black px-7 py-4 rounded-sm hover:bg-cream transition-colors text-lg">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.6 10.8z"/>
-        </svg>
-        {PHONE}
+      <a href="/contact" class="inline-flex items-center gap-2.5 bg-white text-red font-black px-7 py-4 rounded-sm hover:bg-cream transition-colors text-lg">
+        Get a Quote
       </a>
     </div>
   </section>
