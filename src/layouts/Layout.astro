@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import SchemaOrg from '../components/SchemaOrg.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 import { BUSINESS_NAME, CANONICAL_URL } from '../data/site';
 
 interface Props {
@@ -90,10 +91,9 @@ const localBusinessSchema = {
     "worstRating": "1",
     "ratingCount": "3"
   },
-  "sameAs": [
-    "https://www.facebook.com/scroofingltd",
-    "https://www.instagram.com/scroofingltd"
-  ]
+  // Social links removed — old accounts belong to a different business.
+  // Re-add once Shane provides the new Facebook / Instagram URLs.
+  "sameAs": []
 };
 ---
 
@@ -126,6 +126,8 @@ const localBusinessSchema = {
       <slot />
     </main>
     <Footer />
+
+    <CookieBanner />
 
     <!-- Lenis smooth scroll + cursor -->
     <script>

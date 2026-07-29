@@ -23,10 +23,9 @@ export const navLinks = [
   { href: "/contact",     label: "Contact" },
 ];
 
-export const socialLinks = [
-  { label: "Facebook",  href: "https://facebook.com/scroofingltd",  icon: "facebook" },
-  { label: "Instagram", href: "https://instagram.com/scroofingltd", icon: "instagram" },
-];
+// Social links removed — accounts belong to a different business.
+// Re-add when Shane confirms new Facebook/Instagram handles.
+export const socialLinks: { label: string; href: string; icon: string }[] = [];
 
 export const accreditations = [
   { name: "NRTC Certified", abbr: "NRTC" },

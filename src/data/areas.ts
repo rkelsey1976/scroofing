@@ -7,6 +7,7 @@ export interface Area {
   metaTitle: string;
   metaDescription: string;
   driveTime: string;
+  parent?: string;
 }
 
 export const areas: Area[] = [
@@ -22,6 +23,7 @@ export const areas: Area[] = [
   },
   {
     slug: "saltford",
+    parent: "keynsham",
     name: "Saltford",
     h1: "Roofing Contractors Saltford",
     shortDesc: "Local roofers for Saltford — repairs and replacements on village properties between Bath and Bristol.",
@@ -32,6 +34,7 @@ export const areas: Area[] = [
   },
   {
     slug: "bitton",
+    parent: "keynsham",
     name: "Bitton",
     h1: "Roofing Contractors Bitton",
     shortDesc: "Roofing repairs and replacements in Bitton — covering the BS30 village and surrounding properties.",
@@ -42,6 +45,7 @@ export const areas: Area[] = [
   },
   {
     slug: "longwell-green",
+    parent: "keynsham",
     name: "Longwell Green",
     h1: "Roofing Contractors Longwell Green",
     shortDesc: "Roofing services in Longwell Green and Hanham — covering South Gloucestershire's BS30 postcode.",
@@ -152,6 +156,7 @@ export const areas: Area[] = [
   },
   {
     slug: "combe-down",
+    parent: "bath",
     name: "Combe Down",
     h1: "Roofing Contractors Combe Down",
     shortDesc: "Roofing repairs and replacements in Combe Down — specialists in Bath stone and natural slate properties.",
@@ -162,6 +167,7 @@ export const areas: Area[] = [
   },
   {
     slug: "bear-flat",
+    parent: "bath",
     name: "Bear Flat",
     h1: "Roofing Contractors Bear Flat",
     shortDesc: "Local roofers for Bear Flat — repairs and replacements on Bath's Victorian and Edwardian terraces.",
@@ -172,6 +178,7 @@ export const areas: Area[] = [
   },
   {
     slug: "widcombe",
+    parent: "bath",
     name: "Widcombe",
     h1: "Roofing Contractors Widcombe Bath",
     shortDesc: "Trusted roofers for Widcombe and Lyncombe — stone cottages, terraces and period properties.",
@@ -182,6 +189,7 @@ export const areas: Area[] = [
   },
   {
     slug: "odd-down",
+    parent: "bath",
     name: "Odd Down",
     h1: "Roofing Contractors Odd Down Bath",
     shortDesc: "Roofing repairs and replacements in Odd Down — covering BA2 with a fast local response.",
@@ -192,6 +200,7 @@ export const areas: Area[] = [
   },
   {
     slug: "twerton",
+    parent: "bath",
     name: "Twerton",
     h1: "Roofing Contractors Twerton Bath",
     shortDesc: "Roofing services in Twerton — repairs and replacements for Bath's western suburbs.",
@@ -202,6 +211,7 @@ export const areas: Area[] = [
   },
   {
     slug: "weston-bath",
+    parent: "bath",
     name: "Weston, Bath",
     h1: "Roofing Contractors Weston Bath",
     shortDesc: "Roofers for Weston and Newbridge — covering north-west Bath with the full range of roofing services.",
@@ -212,6 +222,7 @@ export const areas: Area[] = [
   },
   {
     slug: "larkhall",
+    parent: "bath",
     name: "Larkhall",
     h1: "Roofing Contractors Larkhall Bath",
     shortDesc: "Trusted local roofers for Larkhall and Fairfield Park — north Bath's Victorian and Edwardian housing.",
@@ -222,6 +233,7 @@ export const areas: Area[] = [
   },
   {
     slug: "bathampton",
+    parent: "bath",
     name: "Bathampton & Batheaston",
     h1: "Roofing Contractors Bathampton",
     shortDesc: "Roofing services for Bathampton, Batheaston and the eastern Bath villages.",
