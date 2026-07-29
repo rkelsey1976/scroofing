@@ -14,7 +14,7 @@ const breadcrumbSchema = {
 
   <Layout
     title="About SC Roofing Ltd | Bath & Somerset Roofers"
-    description="SC Roofing Ltd — a small, privately owned roofing company based in Peasedown St John, Bath. Over 20 years of experience. NFRC member, NFRC CPS registered, Velux certified. Fully insured."
+    description="SC Roofing Ltd — a small, privately owned roofing company based in Peasedown St John, Bath. Over 20 years of experience. NFRC Trade Member, NFRC CPS registered for pitched roofing, Velux certified. Fully insured."
     canonicalPath="/about"
   schemas={[breadcrumbSchema]}
 >
@@ -63,8 +63,8 @@ const breadcrumbSchema = {
         <ul class="space-y-3 mb-10">
           {[
             'NFRC Member — Trade Member of the National Federation of Roofing Contractors',
-            'NFRC Competent Person Scheme — self-certify Building Regulations without separate inspection',
-            'Velux Certified Installer — approved for roof windows, sun tunnels and flat roof windows',
+            'NFRC Competent Person Scheme — registered for pitched roofing self-certification (ID 11921)',
+            'Velux Certified Installer — TrustMark Government Endorsed Quality',
             'Fully insured — Public Liability & Employer\'s',
             'Registered in England & Wales',
             'Insurance work accepted — written reports provided',
@@ -81,11 +81,23 @@ const breadcrumbSchema = {
           ))}
         </ul>
 
-        <!-- Accreditations note -->
-        <div class="bg-cream border border-ink/10 p-5 mb-6">
-          <p class="text-xs font-bold uppercase tracking-[0.2em] text-ink/40 mb-2">Accreditation certificates</p>
-          <p class="text-ink/70 text-sm leading-relaxed">
-            We hold current NFRC Trade Membership and are registered under the NFRC Competent Person Scheme (covers pitched, flat and fully supported metal roofing). We're also Velux Certified Installers. Current certificate images are available on request — we can email or print copies for any customer who needs to see proof of accreditation.
+        <!-- Accreditations note + current NFRC CPS cert -->
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-ink/40 mb-4">NFRC Competent Person Scheme</p>
+        <div class="border border-ink/10 bg-white p-3 mb-3 max-w-md">
+          <img src="/images/nfrc-cps-2026.webp" alt="NFRC Competent Person Scheme certificate — SC Roofing Limited. Valid 10 May 2026 – 09 May 2027. Registered for pitched roofing self-certification."
+            class="w-full h-auto" loading="lazy" width="900" height="1158" />
+        </div>
+        <p class="text-xs text-ink/50 leading-relaxed max-w-md mb-8">
+          Certificate ID 11921 · Valid 10 May 2026 – 09 May 2027 · UKAS Product Certification 7717
+        </p>
+
+        <!-- Velux Certified Installer badge -->
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-ink/40 mb-4">Velux Certified Installer</p>
+        <div class="border border-ink/10 bg-white p-3 mb-3 max-w-md flex items-center gap-4">
+          <img src="/images/velux-certified-2026.webp" alt="Velux Certified Installer badge — TrustMark Government Endorsed Quality"
+            class="h-32 w-auto" loading="lazy" width="248" height="279" />
+          <p class="text-xs text-ink/60 leading-relaxed flex-1">
+            SC Roofing is registered as a Velux Certified Installer. Velux certification is part of the TrustMark Government Endorsed Quality scheme.
           </p>
         </div>
       </div>
