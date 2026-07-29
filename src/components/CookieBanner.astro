@@ -64,7 +64,7 @@ const GA4_ID = 'G-D70X0WMKKG';
       window.__sc_ga4_loaded = true;
 
       window.dataLayer = window.dataLayer || [];
-      function gtag(){ dataLayer.push(arguments); }
+      window.gtag = function(){ dataLayer.push(arguments); };
       gtag('js', new Date());
       gtag('config', GA4_ID, { anonymize_ip: true });
 
@@ -72,6 +72,57 @@ const GA4_ID = 'G-D70X0WMKKG';
       s.async = true;
       s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
       document.head.appendChild(s);
+
+      // After GA4 loads, register conversion events for phone + email clicks.
+      // These show up in GA4 Admin > Events and should be marked as conversions
+      // for lead-attribution reporting (which pages generate calls/emails).
+      installContactClickTracking();
+    }
+
+    function installContactClickTracking() {
+      if (window.__sc_contact_tracking_installed) return;
+      window.__sc_contact_tracking_installed = true;
+
+      document.addEventListener('click', function (e) {
+        // Only proceed if GA4 has actually loaded (i.e. consent granted)
+        if (!window.__sc_ga4_loaded) return;
+
+        var t = e.target;
+        if (!(t instanceof Element)) return;
+
+        var a = t.closest('a');
+        if (!a) return;
+
+        var href = a.getAttribute('href') || '';
+        var eventName = null;
+        var linkType = null;
+
+        if (href.indexOf('tel:') === 0) {
+          eventName = 'contact_phone_click';
+          linkType = 'phone';
+        } else if (href.indexOf('mailto:') === 0) {
+          eventName = 'contact_email_click';
+          linkType = 'email';
+        } else {
+          return;
+        }
+
+        // Identify where the click happened — useful for figuring out
+        // which pages drive leads. Header/footer vs main content.
+        var inHeader = !!a.closest('header, nav');
+        var inFooter = !!a.closest('footer');
+        var linkLocation = inHeader ? 'header' : inFooter ? 'footer' : 'page';
+
+        // Sanitise page path so we don't accidentally send PII
+        var pagePath = window.location.pathname || '(unknown)';
+
+        gtag('event', eventName, {
+          link_type: linkType,
+          link_location: linkLocation,
+          link_url: href,
+          page_path: pagePath
+        });
+      });
     }
 
     function showBanner() {
