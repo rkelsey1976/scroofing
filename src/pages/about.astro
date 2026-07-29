@@ -10,13 +10,68 @@ const breadcrumbSchema = {
     { "@type": "ListItem", "position": 2, "name": "About", "item": `${CANONICAL_URL}/about` }
   ]
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What accreditations does S.C Roofing hold?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "S.C Roofing Ltd is a Trade Member of the National Federation of Roofing Contractors (NFRC), is registered under the NFRC Competent Person Scheme for pitched roofing self-certification (Certificate ID 11921, valid 10 May 2026 to 09 May 2027), and is a Velux Certified Installer under the TrustMark Government Endorsed Quality scheme. We are also fully insured for Public Liability and Employer's Liability, and registered in England & Wales."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the NFRC Competent Person Scheme mean for customers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "NFRC CPS is the only roofing-specific scheme that allows roofers in England and Wales to self-certify that their roof refurbishment work meets Building Regulations 4 and 7. For the customer this means no separate Building Control inspection fee or delay on a qualifying re-roof, automatic issue of a Building Regulation Compliance Certificate, and eligibility for a 10-year Insurance-Backed Guarantee where required. S.C Roofing's CPS registration covers pitched roofing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long has S.C Roofing been trading?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "S.C Roofing Ltd has been trading for over 20 years, established in 2004. The company is based at 9 Frenchfield Road, Peasedown St John, Bath, BA2 8SL and is privately owned."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What areas does S.C Roofing cover?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "S.C Roofing covers Bath, Somerset and north Wiltshire within a 30-mile radius of our Peasedown St John depot. This includes Bath itself, Keynsham, Radstock, Midsomer Norton, Frome, Trowbridge, Shepton Mallet, Wells, Paulton, Norton St Philip and surrounding villages."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you do free surveys?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. S.C Roofing provides free written surveys with no obligation and no hard sell. For most areas we can inspect within 24–48 hours of enquiry, and quotes are provided in writing before any work starts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does S.C Roofing do insurance work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. S.C Roofing accepts roofing work on insurance claims and provides written inspection reports suitable for use by insurers, loss adjusters, mortgage lenders and solicitors. We have over 20 years of experience with storm damage, leak investigations and pre-purchase roof surveys."
+      }
+    }
+  ]
+};
 ---
 
   <Layout
     title="About SC Roofing Ltd | Bath & Somerset Roofers"
     description="SC Roofing Ltd — a small, privately owned roofing company based in Peasedown St John, Bath. Over 20 years of experience. NFRC Trade Member, NFRC CPS registered for pitched roofing, Velux certified. Fully insured."
     canonicalPath="/about"
-  schemas={[breadcrumbSchema]}
+  schemas={[breadcrumbSchema, faqSchema]}
 >
 
   <section class="relative bg-ink overflow-hidden flex flex-col justify-end" style="min-height: clamp(500px, 65vh, 700px);">
@@ -112,6 +167,62 @@ const breadcrumbSchema = {
           <p class="font-bebas text-white text-2xl leading-none mb-1" style="letter-spacing: 0.03em;">S.C Roofing Ltd</p>
           <p class="text-stone text-sm">Peasedown St John · Est. 2004</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ (also serves as AI-search extractable Q&A) -->
+  <section class="bg-cream py-20 border-t border-ink/10">
+    <div class="max-w-4xl mx-auto px-6 lg:px-10">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="w-8 h-px bg-red block"></span>
+        <p class="text-red text-xs font-bold uppercase tracking-[0.25em]">Frequently asked</p>
+      </div>
+      <h2 class="font-display text-ink mb-12 leading-none" style="font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: 0.02em;">
+        Questions customers ask<br />before getting in touch.
+      </h2>
+
+      <div class="space-y-4">
+        {[
+          {
+            q: "What accreditations does S.C Roofing hold?",
+            a: `S.C Roofing Ltd is a Trade Member of the National Federation of Roofing Contractors (NFRC), is registered under the NFRC Competent Person Scheme for pitched roofing self-certification (Certificate ID 11921, valid 10 May 2026 to 09 May 2027), and is a Velux Certified Installer under the TrustMark Government Endorsed Quality scheme. We are also fully insured for Public Liability and Employer's Liability, and registered in England & Wales.`
+          },
+          {
+            q: "What does the NFRC Competent Person Scheme mean for me as a customer?",
+            a: `The NFRC CPS is the only roofing-specific scheme that allows roofers in England and Wales to self-certify that their roof refurbishment work meets Building Regulations 4 and 7. For you this means no separate Building Control inspection fee or delay on a qualifying re-roof, automatic issue of a Building Regulation Compliance Certificate, and eligibility for a 10-year Insurance-Backed Guarantee where required. Our CPS registration covers pitched roofing.`
+          },
+          {
+            q: "How long has S.C Roofing been trading?",
+            a: `Over 20 years — established in 2004. We are a small, privately owned company based at 9 Frenchfield Road, Peasedown St John, Bath, BA2 8SL.`
+          },
+          {
+            q: "What areas do you cover?",
+            a: `Bath, Somerset and north Wiltshire within a 30-mile radius of our Peasedown St John depot. This includes Bath, Keynsham, Radstock, Midsomer Norton, Frome, Trowbridge, Shepton Mallet, Wells, Paulton, Norton St Philip and surrounding villages.`
+          },
+          {
+            q: "Do you do free surveys?",
+            a: `Yes. All surveys are free, written, and no-obligation. For most areas we can inspect within 24-48 hours of your enquiry, and you receive a fixed-price written quote before any work starts.`
+          },
+          {
+            q: "Do you take on insurance work?",
+            a: `Yes. We accept roofing work on insurance claims and provide written inspection reports suitable for insurers, loss adjusters, mortgage lenders and solicitors. We have over 20 years of experience with storm damage, leak investigations and pre-purchase roof surveys.`
+          }
+        ].map((item, i) => (
+          <details class="group border border-ink/10 bg-white">
+            <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+              <h3 class="font-display text-ink font-bold text-lg leading-snug pr-4">{item.q}</h3>
+              <span class="w-8 h-8 bg-red/10 group-open:bg-red flex items-center justify-center flex-shrink-0 transition-colors duration-200">
+                <svg class="w-4 h-4 text-red group-open:text-white transition-transform duration-200 group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="px-5 pb-5 -mt-2 text-ink/75 leading-relaxed text-base">
+              <p>{item.a}</p>
+            </div>
+          </details>
+        ))}
       </div>
     </div>
   </section>
