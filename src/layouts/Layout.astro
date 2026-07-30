@@ -19,12 +19,19 @@ const canonical = `${CANONICAL_URL}${canonicalPath}`;
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "RoofingContractor",
+"@type": "RoofingContractor",
   "@id": `${CANONICAL_URL}/#business`,
   "name": BUSINESS_NAME,
+  "legalName": "S. C. Roofing Limited",
   "url": CANONICAL_URL,
-  "telephone": "+447881903188",
+  "telephone": "+447****3188",
   "email": "info@scroofing.co.uk",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "GB-COH",
+    "value": "09717871",
+    "url": "https://find-and-update.company-information.service.gov.uk/company/09717871"
+  },
   "description": "S.C Roofing Ltd — trusted roofing contractors in Bath & Somerset for over 20 years. Repairs, new roofs, flat roofs, chimneys and leadwork. NFRC Trade Member, NFRC CPS registered (pitched), Velux Certified. Fully insured.",
   "foundingDate": "2004",
   "logo": `${CANONICAL_URL}/logo.svg`,
@@ -104,7 +111,8 @@ const localBusinessSchema = {
     "https://www.facebook.com/scroofinglimited/",
     "https://www.instagram.com/s.croofing/",
     "https://www.linkedin.com/in/shane-callinan",
-    "GBP_REVIEW_URL"
+    "GBP_REVIEW_URL",
+    "https://find-and-update.company-information.service.gov.uk/company/09717871"
   ],
   "hasCredential": [
     {
