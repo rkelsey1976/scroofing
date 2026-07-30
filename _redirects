@@ -1,0 +1,5 @@
+# Force www to non-www canonical host
+# This is in addition to Netlify's automatic domain handling so that
+# the redirect is explicit, documented, and Google receives a clear
+# permanent (301) signal to consolidate the canonical on non-www.
+https://www.scroofing.co.uk/* https://scroofing.co.uk/:splat 301!
