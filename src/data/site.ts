@@ -2,7 +2,7 @@ export const PHONE = "07881 903 188";
 export const PHONE_HREF = "tel:+447881903188";
 export const BUSINESS_NAME = "S.C Roofing Ltd";
 export const EMAIL = "info@scroofing.co.uk";
-export const ADDRESS = "9 Frenchfield Road, Peasedown St John, Bath, BA2 8SL";
+export const ADDRESS = "Delys, Eckweek Road, Peasedown St John, Bath, BA2 8EQ";
 export const CANONICAL_URL = "https://scroofing.co.uk";
 
 export const OPENING_HOURS = [
