@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # Local Netlify folder
 .netlify
+
+# IndexNow last-submission state (regenerated on each run)
+.indexnow-state.json
