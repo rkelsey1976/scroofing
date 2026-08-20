@@ -3,3 +3,25 @@
 # the redirect is explicit, documented, and Google receives a clear
 # permanent (301) signal to consolidate the canonical on non-www.
 https://www.scroofing.co.uk/* https://scroofing.co.uk/:splat 301!
+
+# Site-wide rewrite: any URL without a trailing slash serves the same content
+# as the slashed version (no 301 redirect, just a rewrite to status 200).
+#
+# Why: Astro pages declare their canonical URL as the no-trailing-slash path
+# (e.g. <link rel="canonical" href="https://scroofing.co.uk/areas/widcombe">),
+# but Netlify's "Pretty URLs" feature redirects the no-slash URL to the
+# slashed URL with HTTP 301. The slashed page is then served, but its
+# declared canonical points elsewhere, which makes Google flag the slashed
+# page as "Alternate page with proper canonical tag" and de-index it.
+#
+# By rewriting (not redirecting) the no-slash URL to the slashed version
+# with status 200, both URLs serve the same 200 content with no redirect
+# chain. Google can index either URL cleanly; the canonical mismatch goes
+# away.
+#
+# This rule does NOT affect URLs that already end in a slash — they fall
+# through to Netlify's normal static file serving.
+#   /areas/widcombe  ->  /areas/widcombe/   (200, no redirect)
+#   /about           ->  /about/            (200, no redirect)
+#   /                ->  /                  (untouched)
+/*  /:splat/   200
