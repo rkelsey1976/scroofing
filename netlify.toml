@@ -1,0 +1,33 @@
+# Netlify configuration for sc-roofing.
+#
+# This file is committed alongside _redirects so that the rewrite rules
+# below override Netlify's default "Pretty URLs" behaviour (which
+# redirects URLs without trailing slash to the slashed version with
+# HTTP 301 — this conflicts with Astro's declared canonical URL format
+# and caused Google to flag every interior page as "Alternate page
+# with proper canonical tag" in GSC).
+
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# Force trailing-slash rewrites (no 301) so both slashed and unslashed
+# URLs serve the same content with status 200. The canonical URL
+# declared by Astro (no trailing slash) is now self-referential and
+# reachable directly, so Google stops de-indexing the slashed versions
+# as alternates.
+#
+# This is a rewrite, not a redirect — the browser URL bar stays the
+# same and the page renders normally.
+[[redirects]]
+  from = "/*"
+  to = "/:splat/"
+  status = 200
+  force = true
+
+# Force www to non-www canonical host (preserved from _redirects).
+[[redirects]]
+  from = "https://www.scroofing.co.uk/*"
+  to = "https://scroofing.co.uk/:splat"
+  status = 301
+  force = true
