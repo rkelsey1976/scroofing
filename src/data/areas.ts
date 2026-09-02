@@ -57,11 +57,11 @@ export const areas: Area[] = [
   {
     slug: "keynsham",
     name: "Keynsham",
-    h1: "Roofing Contractors Keynsham",
-    shortDesc: "Local roofers for Keynsham — repairs, replacements and flat roofing on domestic and commercial properties.",
-    longDesc: "Keynsham sits just across the Somerset/Bristol boundary and is one of our most active service areas. S.C Roofing covers all roofing work in Keynsham and the surrounding BS31 postcode — from roof tile repairs and flat roof replacements on residential properties to commercial roofing on the Ashmead industrial estate. We're one of the nearest roofing contractors to Keynsham and can typically respond within 24 hours for non-emergency work.",
-    metaTitle: "Roofing Contractors Keynsham BS31 | SC Roofing Ltd",
-    metaDescription: "Roofing contractors in Keynsham, BS31. Repairs, new roofs and flat roofing. Domestic and commercial. Fast response. SC Roofing 07881 903 188.",
+    h1: "Roofers Keynsham — Fascias, Roof Repairs & Roofing",
+    shortDesc: "Local roofers for Keynsham — fascias and soffits, roof repairs, replacements and flat roofing on domestic and commercial properties.",
+    longDesc: "Keynsham sits just across the Somerset/Bristol boundary and is one of our most active service areas. S.C Roofing covers all roofing work in Keynsham and the surrounding BS31 postcode — fascias and soffits, roof tile repairs, full roof replacements, flat roofing on extensions and garages, and commercial roofing on the Ashmead industrial estate. We're one of the nearest roofing contractors to Keynsham and can typically respond within 24 hours for non-emergency work. For a free quote on any roofing work in Keynsham, call 07881 903 188 — we're happy to talk it through before you commit to anything.",
+    metaTitle: "Roofers Keynsham BS31 | Fascias, Roof Repairs & Roofing | SC Roofing",
+    metaDescription: "Roofers in Keynsham BS31: fascias & soffits, roof repairs, replacements and flat roofing. Domestic and commercial, fast response. Call SC Roofing on 07881 903 188.",
     driveTime: "10 mins",
   },
   {

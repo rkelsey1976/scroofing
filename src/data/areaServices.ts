@@ -103,8 +103,8 @@ export const areaServiceCopy: Record<string, AreaServiceCopy> = {
   },
 
   'keynsham-guttering': {
-    metaTitle: `Guttering Keynsham BS31 | Fascias & Soffits | SC Roofing`,
-    metaDescription: `Guttering, fascias and soffits in Keynsham, BS31. UPVC and cast iron. Downpipes and roofline replacement. SC Roofing 07881 903 188.`,
+    metaTitle: `Fascias Keynsham BS31 | Soffits, Guttering & Roofline | SC Roofing`,
+    metaDescription: `Fascias in Keynsham BS31 — plus soffits, guttering and full roofline replacement. UPVC and cast iron fitted. Free quotes: SC Roofing 07881 903 188.`,
     intro: `Blocked, leaking or sagging gutters are one of the most common sources of external wall damp on Keynsham properties. The town's mix of Victorian terrace and post-war semi means we deal with both cast iron and UPVC systems regularly, and both have different failure modes that require different solutions.`,
     body: `We replace guttering, fascias, soffits and bargeboards across Keynsham's BS31 postcode. UPVC systems are fitted with correct falls to prevent ponding; cast iron is re-hung on new brackets or replaced in-kind where required. Ventilated soffits are fitted on all new installations where roof space ventilation is required. All work is fully guaranteed.`,
   },
