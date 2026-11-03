@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { heroSrcset } from '../../../utils/heroSrcset';
 import { areas } from '../../../data/areas';
 import { services } from '../../../data/services';
 import { getAreaServiceCopy } from '../../../data/areaServices';
@@ -66,7 +67,7 @@ const breadcrumbSchema = {
   <!-- Hero -->
   <section class="relative bg-ink overflow-hidden flex flex-col justify-end" style="min-height: clamp(500px, 65vh, 700px);">
     <div class="absolute inset-0" aria-hidden="true">
-      <img src={service.heroImage} alt="" class="w-full h-full object-cover object-center" loading="eager" />
+      <img src={service.heroImage} srcset={heroSrcset(service.heroImage)} sizes="100vw" alt="" class="w-full h-full object-cover object-center" loading="eager" fetchpriority="high" />
       <div class="absolute inset-0 bg-ink/75"></div>
       <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink to-transparent"></div>
     </div>

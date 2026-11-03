@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { heroSrcset } from '../utils/heroSrcset';
 import { PHONE, PHONE_HREF } from '../data/site';
 ---
 
@@ -14,7 +15,7 @@ import { PHONE, PHONE_HREF } from '../data/site';
 
     <!-- Background image -->
     <div class="absolute inset-0" aria-hidden="true">
-      <img src="/images/roof-bristol.webp" alt="" class="w-full h-full object-cover object-center" loading="eager" />
+      <img src="/images/roof-bristol.webp" srcset={heroSrcset('/images/roof-bristol.webp')} sizes="100vw" alt="" class="w-full h-full object-cover object-center" loading="eager" fetchpriority="high" />
       <div class="absolute inset-0 bg-ink/85"></div>
     </div>
 

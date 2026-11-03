@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { heroSrcset } from '../utils/heroSrcset';
 import { services } from '../data/services';
 import { areas } from '../data/areas';
 import { testimonials } from '../data/testimonials';
@@ -31,7 +32,7 @@ const serviceImages: Record<string, string> = {
 
   <!-- Hero background image -->
   <div class="absolute inset-0" aria-hidden="true">
-    <img src="/images/roof-bristol.webp" alt="" class="w-full h-full object-cover object-center" loading="eager" fetchpriority="high" />
+    <img src="/images/roof-bristol.webp" srcset={heroSrcset('/images/roof-bristol.webp')} sizes="100vw" alt="" class="w-full h-full object-cover object-center" loading="eager" fetchpriority="high" />
     <!-- Dark overlay to keep text legible -->
     <div class="absolute inset-0 bg-ink/75"></div>
     <!-- Gradient fade at bottom -->

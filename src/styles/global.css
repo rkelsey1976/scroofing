@@ -13,8 +13,8 @@
   --color-stone-light:  #c5c1b8;
 
   /* Fonts */
-  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --font-sans:    'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Playfair Display Variable', 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans:    'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-bebas:   'Bebas Neue', 'Arial Narrow', sans-serif;
 
   /* Custom text sizes */

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { heroSrcset } from '../../utils/heroSrcset';
 import { areas } from '../../data/areas';
 import { CANONICAL_URL } from '../../data/site';
 
@@ -22,7 +23,7 @@ const breadcrumbSchema = {
 
   <section class="relative bg-ink pt-36 pb-20 overflow-hidden">
     <div class="absolute inset-0" aria-hidden="true">
-      <img src="/images/roof-bristol.webp" alt="" class="w-full h-full object-cover object-center" loading="eager" />
+      <img src="/images/roof-bristol.webp" srcset={heroSrcset('/images/roof-bristol.webp')} sizes="100vw" alt="" class="w-full h-full object-cover object-center" loading="eager" fetchpriority="high" />
       <div class="absolute inset-0 bg-ink/75"></div>
       <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink to-transparent"></div>
     </div>
