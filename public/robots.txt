@@ -33,4 +33,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://www.scroofing.co.uk/sitemap-index.xml
+Sitemap: https://scroofing.co.uk/sitemap-index.xml
